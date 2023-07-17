@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 const App = () => {
-  return <div>Hello world</div>;
+  return <div>Hello World</div>;
 };
 
 export default App;
