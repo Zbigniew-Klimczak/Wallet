@@ -14,8 +14,8 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 import styles from './RegistrationForm.module.css';
 
-import logo from '../../images/logo.svg';
-import { register } from 'redux/auth/auth-operations';
+// import logo from '../../images/logo.svg';
+// import { register } from 'redux/auth/auth-operations';
 import { PasswordStrengthMeter } from '../PasswordStrengthMeter/PasswordStrengthMeter';
 
 export const RegistrationForm = () => {
