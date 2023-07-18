@@ -4,6 +4,8 @@
   align-items: center;
   justify-content: center;
   padding: 107px 20px;
+  background-color: #fff;
+  border-radius: 20px;
 }
 
 .logo {
@@ -106,8 +108,10 @@
 @media (min-width: 768px) {
   .container {
     padding: 40px 60px 62px 65px;
-    max-width: 533px;
+    width: 533px;
+    height: 468px;
     margin: 0 auto;
+    box-sizing: border-box;
   }
   .login {
     width: 300px;

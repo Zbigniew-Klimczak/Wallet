@@ -1,0 +1,72 @@
+.container {
+  background-color: #e7eaf2;
+  background-image: url(../../images/Ellipse1.png),
+    url(../../images/Ellipse2.png);
+  background-repeat: no-repeat;
+  background-position: bottom 0px left -40px, top 0px right -50px;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+.loginForm {
+  position: absolute;
+  top: 57%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.logo {
+  width: 260.261px;
+  height: 250px;
+}
+.header {
+  display: flex;
+  padding: 60px 150px 0px 114px;
+  justify-content: space-between;
+  align-items: center;
+}
+.title {
+  color: #000;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+@media (min-width: 1280px) {
+  .header {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #e7eaf2;
+    background-image: url(../../images/Ellipse1.png),
+      url(../../images/Elipse3.png);
+    background-repeat: no-repeat;
+    background-position: bottom 0px left 0px, top 0px right 0px;
+  }
+  .logo {
+    width: 435.2px;
+    height: 419.5px;
+    margin-top: 60px;
+    margin-left: -25px;
+  }
+  .loginFormBig {
+    width: 731px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(25px);
+  }
+  .header {
+    padding: 0px;
+    width: 529px;
+    padding-left: 45px;
+  }
+}
