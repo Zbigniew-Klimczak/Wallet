@@ -1,0 +1,33 @@
+@font-face {
+  font-family: "Poppins";
+  src: url(../assets/fonts/Poppins-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Circe";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Circe"), url("../assets/fonts/CRC55.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Circe Extra Light";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Circe Extra Light"),
+    url("../assets/fonts/CRC25.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Circe Light";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Circe Light"), url("../assets/fonts/CRC35.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Circe Bold";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Circe Bold"), url("../assets/fonts/CRC65.woff") format("woff");
+}
