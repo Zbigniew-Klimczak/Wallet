@@ -2,6 +2,11 @@
 import css from "./LoginForm.module.css";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../redux/userSlice/userSlice";
+import toast, { Toaster } from "react-hot-toast";
+import { useEffect } from "react";
+
 // import { envelope } from "../../SVG/envelope.svg";
 const LoginForm = () => {
   const SignupSchema = Yup.object().shape({
@@ -9,9 +14,32 @@ const LoginForm = () => {
     password: Yup.string().required("Required"),
   });
 
+  const dispatch = useDispatch();
+  const { user, token, error } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    if (token) {
+      toast(`Hello ${user.email}`);
+    }
+    if (error !== null) {
+      toast("Zły email lub hasło");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [token, error]);
+
   return (
     <div className={css.container}>
       <div className={css.logo}>
+        <Toaster
+          toastOptions={{
+            style: {
+              border: "5px solid yellow",
+              fontSize: "36px",
+              backgroundColor: "red",
+              color: "#fff",
+            },
+          }}
+        />
         <img className={css.logo__icon} src="/logo.svg" alt="logo" />
         <h1 className={css.logo__txt}>Wallet</h1>
       </div>
@@ -21,9 +49,8 @@ const LoginForm = () => {
           password: "",
         }}
         validationSchema={SignupSchema}
-        onSubmit={async (values) => {
-          await new Promise((r) => setTimeout(r, 500));
-          alert(JSON.stringify(values, null, 2));
+        onSubmit={(values) => {
+          dispatch(login(values));
         }}
       >
         <Form className={css.form}>
