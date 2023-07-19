@@ -39,9 +39,11 @@ const RegistrationForm = () => {
 							placeholder='Email'
 						/>
 						<ErrorMessage
-							name='email'
+							name='password'
 							component='Field'
-						/>
+						>
+							{(msg) => <div>{msg}</div>}
+						</ErrorMessage>
 					</div>
 					<div className={css.input__div}>
 						<Field
@@ -54,7 +56,9 @@ const RegistrationForm = () => {
 						<ErrorMessage
 							name='password'
 							component='Field'
-						/>
+						>
+							{(msg) => <div>{msg}</div>}
+						</ErrorMessage>
 					</div>
 					<button
 						className={css.login}

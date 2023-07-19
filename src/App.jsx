@@ -1,5 +1,5 @@
 import './App.css';
-import { lazy } from 'react';
+import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -12,6 +12,7 @@ const RegistrationPage = lazy(() =>
 const App = () => {
 	return (
 		<div>
+			<Suspense fallback={<h1>Loading</h1>}>
 			<Routes>
 				<Route
 					path='/'
@@ -22,6 +23,7 @@ const App = () => {
 					element={<RegistrationPage />}
 				/>
 			</Routes>
+			</Suspense>
 		</div>
 	);
 };
