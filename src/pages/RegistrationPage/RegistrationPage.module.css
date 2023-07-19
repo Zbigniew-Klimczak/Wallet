@@ -1,0 +1,64 @@
+/*Tablet*/
+@media screen and (min-width: 768px) {
+    .commonContainer {
+        background-image: url(../../images/Ellipse1.png),
+            url(../../images/Ellipse2.png);
+
+        background-repeat: no-repeat, no-repeat;
+        background-position: bottom left, top right;
+        background-color: #e7eaf2;
+    }
+
+
+    .logoContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 60px;
+    }
+
+    .regImage {
+        margin-bottom: 32px;
+        width: 274px;
+        height: 250px;
+    }
+
+    .title {
+        font-family: 'Poppins';
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 1.5;
+    }
+
+    .formContainer {
+        padding: 52px 91px 52px 107px;
+    }
+}
+
+/*Desktop*/
+@media screen and (min-width: 1280px) {
+    .commonContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .logoContainer {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding: 153px 31px 77.5px 66px;
+    }
+
+    .regImage {
+        margin-bottom: 32px;
+        width: 452px;
+        height: 413px;
+    }
+
+    .formContainer {
+        padding: 52px 91px 52px 107px;
+        background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(25px);
+    }
+}

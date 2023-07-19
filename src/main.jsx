@@ -1,23 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { createRoot } from 'react-dom/client';
-import App from './App';
-import { RegistrationForm } from './components/RegistrationForm/RegistrationForm';
+import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import { PersistGate } from 'redux-persist/integration/react';
+import App from './App.jsx';
+import './index.css';
 
-createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
 		<BrowserRouter>
-			<Routes>
-				<Route
-					path='/'
-					element={<App />}
-				/>
-				<Route
-					path='/registration'
-					element={<RegistrationForm />}
-				/>
-			</Routes>
+			<App />
 		</BrowserRouter>
 	</React.StrictMode>
 );

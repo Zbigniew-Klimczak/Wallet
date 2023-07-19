@@ -18,7 +18,7 @@ import styles from './RegistrationForm.module.css';
 // import { register } from 'redux/auth/auth-operations';
 import { PasswordStrengthMeter } from '../PasswordStrengthMeter/PasswordStrengthMeter';
 
-export const RegistrationForm = () => {
+const RegistrationForm = () => {
 	const [password, setPassword] = useState('');
 	const [showPassword, setShowPassword] = useState(false);
 	const dispatch = useDispatch();
@@ -240,3 +240,5 @@ export const RegistrationForm = () => {
 		</Formik>
 	);
 };
+
+export default RegistrationForm;

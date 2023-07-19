@@ -1,15 +1,25 @@
+import './App.css';
+import { lazy } from 'react';
 import React from 'react';
-import { createRoot } from 'react-dom/client';
+import { Route, Routes } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { REGISTER } from 'redux-persist';
-import { RegistrationForm } from './components/RegistrationForm/RegistrationForm';
 
-
+const RegistrationPage = lazy(() =>
+	import('./pages/RegistrationPage/RegistrationPage')
+);
 
 const App = () => {
-  
-  return <RegistrationForm />;
+	return (
+		<div>
+			<Routes>
+				<Route
+					path='/'
+					element={<RegistrationPage />}
+				/>
+			</Routes>
+		</div>
+	);
 };
 
 export default App;
