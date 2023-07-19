@@ -10,24 +10,10 @@ import { useEffect } from "react";
 
 // import { envelope } from "../../SVG/envelope.svg";
 const LoginForm = () => {
-	const SignupSchema = Yup.object().shape({
-		email: Yup.string().email('Invalid email').required('Required'),
-		password: Yup.string().required('Required'),
-	});
-
-	const dispatch = useDispatch();
-	const { user, token, error } = useSelector((state) => state.user);
-
-	useEffect(() => {
-		if (token) {
-			toast(`Hello ${user.email}`);
-		}
-		if (error !== null) {
-			toast('Zły email lub hasło');
-		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [token, error]);
-
+  const SignupSchema = Yup.object().shape({
+    email: Yup.string().email("Invalid email").required("Required"),
+    password: Yup.string().required("Required"),
+  });
 
   const dispatch = useDispatch();
   const { user, token, error } = useSelector((state) => state.user);
