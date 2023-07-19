@@ -68,6 +68,9 @@
   background-size: contain;
   padding-left: 40px;
 }
+.input__div {
+  width: 100%;
+}
 
 .login {
   border-radius: 20px;
