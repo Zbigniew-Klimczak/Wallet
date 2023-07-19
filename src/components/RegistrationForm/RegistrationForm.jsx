@@ -39,7 +39,7 @@ const RegistrationForm = () => {
 							placeholder='Email'
 						/>
 						<ErrorMessage
-							name='password'
+							name='email'
 							component='Field'
 						>
 							{(msg) => <div>{msg}</div>}
