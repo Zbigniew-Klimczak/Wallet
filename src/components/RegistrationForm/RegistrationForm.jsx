@@ -1,0 +1,119 @@
+import React, { useState } from 'react';
+import css from './RegistrationForm.module.css';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+
+const RegistrationForm = () => {
+	const [confirmPassword, setConfirmPassword] = useState('');
+	const [firstName, setFirstName] = useState('');
+
+	const SignupSchema = Yup.object().shape({
+		email: Yup.string().email('Invalid email').required('Required'),
+		password: Yup.string().required('Required'),
+		confirmPassword: Yup.string()
+			.oneOf([Yup.ref('password'), null], 'Passwords must match')
+			.required('Required'),
+		firstName: Yup.string().required('Required'),
+	});
+
+	return (
+		<div className={css.container}>
+			<div className={css.logo}>
+				<img
+					className={css.logo__icon}
+					src='/logo.svg'
+					alt='logo'
+				/>
+				<h1 className={css.logo__txt}>Wallet</h1>
+			</div>
+			<Formik
+				initialValues={{
+					email: '',
+					password: '',
+					confirmPassword: '',
+					firstName: '',
+				}}
+				validationSchema={SignupSchema}
+				onSubmit={async (values) => {
+					await new Promise((r) => setTimeout(r, 500));
+					alert(JSON.stringify(values, null, 2));
+				}}
+			>
+				<Form className={css.form}>
+					<div className={css.input__div}>
+						<Field
+							className={css.input__email}
+							id='email'
+							name='email'
+							placeholder='Email'
+						/>
+						<ErrorMessage
+							name='email'
+							component='Field'
+						>
+							{(msg) => <div>{msg}</div>}
+						</ErrorMessage>
+					</div>
+					<div className={css.input__div}>
+						<Field
+							className={css.input__password}
+							type='password'
+							id='password'
+							name='password'
+							placeholder='Password'
+						/>
+						<ErrorMessage
+							name='password'
+							component='Field'
+						>
+							{(msg) => <div>{msg}</div>}
+						</ErrorMessage>
+					</div>
+					<div className={css.input__div}>
+						<Field
+							className={css.input__password}
+							type='password'
+							id='confirmPassword'
+							name='confirmPassword'
+							placeholder='Confirm Password'
+						/>
+						<ErrorMessage
+							name='confirmPassword'
+							component='Field'
+						>
+							{(msg) => <div>{msg}</div>}
+						</ErrorMessage>
+					</div>
+					<div className={css.input__div}>
+						<Field
+							className={css.input__firstName}
+							id='firstName'
+							name='firstName'
+							placeholder='First Name'
+						/>
+						<ErrorMessage
+							name='firstName'
+							component='Field'
+						>
+							{(msg) => <div>{msg}</div>}
+						</ErrorMessage>
+					</div>
+					<button
+						className={css.login}
+						type='submit'
+					>
+						LOG IN
+					</button>
+				</Form>
+			</Formik>
+			<button
+				className={css.register}
+				type='button'
+			>
+				REGISTER
+			</button>
+		</div>
+	);
+};
+
+export default RegistrationForm;
