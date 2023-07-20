@@ -34,7 +34,7 @@
 .form {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    max-width: 100%;
     gap: 40px;
     justify-content: center;
     align-items: center;
@@ -73,6 +73,21 @@
     background-size: contain;
     padding-left: 40px;
 }
+.input__firstName {
+    border: none;
+        border-bottom: 1px solid #e0e0e0;
+        padding: 8px;
+        color: black;
+        font-size: 18px;
+        width: 100%;
+}
+.input__firstName::placeholder {
+    color: #e0e0e0;
+        background-image: url(../../SVG/account-box.svg);
+        background-repeat: no-repeat;
+        background-size: contain;
+        padding-left: 40px;
+}
 
 .input__div {
     width: 100%;
@@ -93,7 +108,7 @@
     line-height: normal;
     letter-spacing: 1.8px;
     text-transform: uppercase;
-    width: 100%;
+    width: 300px;
 }
 
 .register {
@@ -111,7 +126,7 @@
     line-height: normal;
     letter-spacing: 1.8px;
     text-transform: uppercase;
-    width: 100%;
+    width: 300px;
     margin-top: 20px;
 }
 
@@ -119,7 +134,7 @@
     .container {
         padding: 40px 60px 62px 65px;
         width: 533px;
-        height: 468px;
+        height: 616px;
         margin: 0 auto;
         box-sizing: border-box;
     }

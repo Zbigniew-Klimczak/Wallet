@@ -1,12 +1,19 @@
-// import React from "react";
+import React, { useState } from 'react';
 import css from './RegistrationForm.module.css';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-// import { envelope } from "../../SVG/envelope.svg";
+
 const RegistrationForm = () => {
+	const [confirmPassword, setConfirmPassword] = useState('');
+	const [firstName, setFirstName] = useState('');
+
 	const SignupSchema = Yup.object().shape({
 		email: Yup.string().email('Invalid email').required('Required'),
 		password: Yup.string().required('Required'),
+		confirmPassword: Yup.string()
+			.oneOf([Yup.ref('password'), null], 'Passwords must match')
+			.required('Required'),
+		firstName: Yup.string().required('Required'),
 	});
 
 	return (
@@ -23,6 +30,8 @@ const RegistrationForm = () => {
 				initialValues={{
 					email: '',
 					password: '',
+					confirmPassword: '',
+					firstName: '',
 				}}
 				validationSchema={SignupSchema}
 				onSubmit={async (values) => {
@@ -55,6 +64,35 @@ const RegistrationForm = () => {
 						/>
 						<ErrorMessage
 							name='password'
+							component='Field'
+						>
+							{(msg) => <div>{msg}</div>}
+						</ErrorMessage>
+					</div>
+					<div className={css.input__div}>
+						<Field
+							className={css.input__password}
+							type='password'
+							id='confirmPassword'
+							name='confirmPassword'
+							placeholder='Confirm Password'
+						/>
+						<ErrorMessage
+							name='confirmPassword'
+							component='Field'
+						>
+							{(msg) => <div>{msg}</div>}
+						</ErrorMessage>
+					</div>
+					<div className={css.input__div}>
+						<Field
+							className={css.input__firstName}
+							id='firstName'
+							name='firstName'
+							placeholder='First Name'
+						/>
+						<ErrorMessage
+							name='firstName'
 							component='Field'
 						>
 							{(msg) => <div>{msg}</div>}
