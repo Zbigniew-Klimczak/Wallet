@@ -36,11 +36,8 @@ const userSlice = createSlice({
       .addCase(register.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(register.fulfilled, (state, action) => {
+      .addCase(register.fulfilled, (state) => {
         state.isLoading = false;
-        state.user = action.payload.data.user;
-        state.isAuth = true;
-        state.token = action.payload.token;
       })
       .addCase(register.rejected, (state, action) => {
         state.isLoading = false;
@@ -67,7 +64,6 @@ const userSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.user = action.payload.data.user;
-        console.log(action.payload.data.token);
         state.isAuth = true;
         state.token = action.payload.data.token;
       })
