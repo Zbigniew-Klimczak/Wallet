@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/userSlice/userSlice";
 import toast, { Toaster } from "react-hot-toast";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 // import { envelope } from "../../SVG/envelope.svg";
 const LoginForm = () => {
@@ -62,7 +63,9 @@ const LoginForm = () => {
               name="email"
               placeholder="Email"
             />
-            <ErrorMessage name="email" component="Field" />
+            <ErrorMessage name="email" component="Field">
+              {(msg) => <div>{msg}</div>}
+            </ErrorMessage>
           </div>
           <div className={css.input__div}>
             <Field
@@ -72,7 +75,9 @@ const LoginForm = () => {
               name="password"
               placeholder="Password"
             />
-            <ErrorMessage name="password" component="Field" />
+            <ErrorMessage name="password" component="Field">
+              {(msg) => <div>{msg}</div>}
+            </ErrorMessage>
           </div>
           <button className={css.login} type="submit">
             LOG IN
@@ -80,7 +85,9 @@ const LoginForm = () => {
         </Form>
       </Formik>
       <button className={css.register} type="button">
-        REGISTER
+        <Link className={css.registerLink} to="/register">
+          REGISTER
+        </Link>
       </button>
     </div>
   );
