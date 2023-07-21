@@ -34,7 +34,7 @@
 .form {
     display: flex;
     flex-direction: column;
-    max-width: 320px;
+    width: 100%;
     gap: 40px;
     justify-content: center;
     align-items: center;
@@ -108,7 +108,7 @@
     line-height: normal;
     letter-spacing: 1.8px;
     text-transform: uppercase;
-    width: 320px;
+    width: 100%;
 }
 
 .register {
@@ -126,7 +126,7 @@
     line-height: normal;
     letter-spacing: 1.8px;
     text-transform: uppercase;
-    width: 320px;
+    width: 100%;
     margin-top: 20px;
 }
 
