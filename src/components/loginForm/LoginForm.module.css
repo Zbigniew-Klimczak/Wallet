@@ -8,6 +8,11 @@
   border-radius: 20px;
 }
 
+.registerLink {
+  text-decoration: none;
+  color: #4a56e2;
+}
+
 .logo {
   display: flex;
   gap: 20px;
