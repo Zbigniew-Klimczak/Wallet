@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url(../assets/fonts/Poppins-Regular.ttf) format('truetype');
+}
+
+.home-button {
+    cursor: pointer;
+    margin-bottom: 10px;
+    display: block;
+    border: none;
+    color: black;
+    background-color: transparent;
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+}
+
+.statistics-button {
+    cursor: pointer;
+    margin-bottom: 10px;
+    display: block;
+    border: none;
+    color: black;
+    background-color: transparent;
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+}
+
+
+.image{
+    height: 24px;
+    width: 24px;
+}
+
+.buttonContainer {
+    display: flex;
+    cursor: pointer;
+}
+ .container {
+    margin: 20px;
+ }
