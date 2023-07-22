@@ -107,7 +107,9 @@ const RegistrationForm = () => {
             </ErrorMessage>
           </div>
           <button className={css.login} type="submit">
-            REGISTER
+            <Link className={css.registerBtn} to="/home">
+              REGISTER
+              </Link>
           </button>
         </Form>
       </Formik>

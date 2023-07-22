@@ -9,6 +9,9 @@ const LoginPage = lazy(() => import('./pages/Login/Login'));
 const RegistrationPage = lazy(() =>
 	import('./pages/Registration/Registration')
 );
+
+const HomePage = lazy(() => import('./pages/Home/Home'));
+
 const ReduxExample = lazy(() => import('./pages/example/reduxExample'));
 
 const App = () => {
@@ -27,6 +30,10 @@ const App = () => {
 					<Route
 						path='/redux'
 						element={<ReduxExample />}
+					/>
+					<Route
+						path='/home'
+						element={<HomePage />}
 					/>
 				</Routes>
 			</Suspense>
