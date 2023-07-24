@@ -7,6 +7,7 @@ const initialState = {
   isLoading: false,
   error: null,
   token: null,
+  balance: 0,
 };
 
 export const login = createAsyncThunk("user/login", async (credentials) => {
@@ -61,11 +62,13 @@ const userSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(login.fulfilled, (state, action) => {
+        console.log(action.payload.data.user.firstName);
+        state.user = action.payload.data.user.firstName;
         state.isLoading = false;
         state.error = null;
-        state.user = action.payload.data.user;
         state.isAuth = true;
         state.token = action.payload.data.token;
+        state.balance = action.payload.data.user.balance;
       })
       .addCase(login.rejected, (state) => {
         state.isLoading = false;

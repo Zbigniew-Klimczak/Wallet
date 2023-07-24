@@ -1,0 +1,113 @@
+.container {
+  width: 280px;
+  height: 174px;
+  background-color: #4a56e2;
+  border-radius: 30px;
+  overflow: hidden;
+  background-image: url("../../images/exchangeBgSmall.png");
+  background-repeat: no-repeat;
+  background-position: left bottom;
+}
+
+.listHeader {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+  background-color: #6e78e8;
+}
+
+.itemHeader {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  font-family: Circe;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  margin-right: 24px;
+}
+.itemHeaderLast {
+  margin-right: 0;
+}
+.list {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.item {
+  color: #fff;
+  font-family: Circe;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-right: 60px;
+}
+.itemLast {
+  margin-right: 0;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 336px;
+    height: 182px;
+    background-image: url("../../images/exchangeBg.png");
+    background-repeat: no-repeat;
+    background-position: left bottom;
+  }
+  .item {
+    margin-right: 95px;
+  }
+  .list {
+    margin-top: 16px;
+  }
+  .itemLast {
+    margin-right: 0;
+  }
+  .left {
+    margin-right: 42px;
+  }
+  .middle {
+    margin-right: 70px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 393px;
+    height: 331px;
+    background-image: url("../../images/exchangeBgBig.png");
+    background-repeat: no-repeat;
+    background-position: left bottom;
+  }
+  .list {
+    margin-top: 20px;
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+  .listHeader {
+    padding-left: 44px;
+    padding-right: 64px;
+  }
+  .itemLeft {
+    margin-right: 79px;
+  }
+  .itemRight {
+    margin-right: 88px;
+  }
+}
