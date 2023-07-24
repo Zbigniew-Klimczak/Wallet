@@ -1,7 +1,16 @@
 // import { useState, useEffect } from 'react';
 // import css from './Home.module.css';
-import headerForm from '../../components/headerForm/headerForm'
 
+import HeaderForm from '../../components/headerForm/headerForm';
+import HomeAndStatisticForm from '../../components/homeandstatisticForm/homeandstatisticForm';
 
+const MyComponent = () => {
+  return (
+    <div>
+      <HeaderForm />
+      <HomeAndStatisticForm />
+    </div>
+  );
+};
 
-export default headerForm;
+export default MyComponent;
