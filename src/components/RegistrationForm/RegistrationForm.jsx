@@ -115,9 +115,7 @@ const RegistrationForm = () => {
               </ErrorMessage>
             </div>
             <button className={css.login} type="submit">
-              <Link className={css.registerBtn} to="/home">
-                REGISTER
-              </Link>
+              REGISTER
             </button>
           </Form>
         )}
