@@ -18,8 +18,12 @@ export const login = createAsyncThunk("user/login", async (credentials) => {
   return response.data;
 });
 
-export const logout = createAsyncThunk("user/logout", async () => {
-  const response = await axios.get("http://localhost:3000/users/logout");
+export const logout = createAsyncThunk("user/logout", async (token) => {
+  const response = await axios.get("http://localhost:3000/users/logout", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
   return response.data;
 });
 
@@ -52,6 +56,8 @@ const userSlice = createSlice({
         state.user = null;
         state.isAuth = false;
         state.token = null;
+        state.balance = 0;
+        localStorage.removeItem("persist:root");
       })
       .addCase(logout.rejected, (state, action) => {
         state.isLoading = false;
@@ -62,12 +68,12 @@ const userSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(login.fulfilled, (state, action) => {
-        console.log(action.payload.data.user.firstName);
+        console.log(action.payload.data.accessToken);
         state.user = action.payload.data.user.firstName;
         state.isLoading = false;
         state.error = null;
         state.isAuth = true;
-        state.token = action.payload.data.token;
+        state.token = action.payload.data.accessToken;
         state.balance = action.payload.data.user.balance;
       })
       .addCase(login.rejected, (state) => {
