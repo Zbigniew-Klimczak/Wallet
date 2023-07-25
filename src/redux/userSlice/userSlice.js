@@ -18,8 +18,12 @@ export const login = createAsyncThunk("user/login", async (credentials) => {
   return response.data;
 });
 
-export const logout = createAsyncThunk("user/logout", async () => {
-  const response = await axios.get("http://localhost:3000/users/logout");
+export const logout = createAsyncThunk("user/logout", async (token) => {
+  const response = await axios.get("http://localhost:3000/users/logout", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
   return response.data;
 });
 
@@ -52,6 +56,8 @@ const userSlice = createSlice({
         state.user = null;
         state.isAuth = false;
         state.token = null;
+        state.balance = 0;
+        localStorage.removeItem("persist:root");
       })
       .addCase(logout.rejected, (state, action) => {
         state.isLoading = false;
