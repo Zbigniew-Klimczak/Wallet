@@ -4,8 +4,20 @@ import Statistics from '../../images/statistics.png';
 import ChartDoughnut from '../Chart/Chart';
 
 function App() {
-	const categories = [1, 2, 3, 4, 5, 6, 7, 8]; 
-
+	
+	const categories = [
+		'Income',
+		'Main expenses',
+		'Products',
+		'Car',
+		'Self care',
+		'Child care',
+		'Household products',
+		'Education',
+		'Leisure',
+		'Other expenses',
+		'Entertainment',
+	];
 
 	const colors = [
 		'#FED057',
