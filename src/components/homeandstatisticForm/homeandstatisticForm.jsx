@@ -5,20 +5,21 @@ import ChartDoughnut from '../Chart/Chart';
 
 function App() {
 	
-	const categories = [
-		'Income',
-		'Main expenses',
-		'Products',
-		'Car',
-		'Self care',
-		'Child care',
-		'Household products',
-		'Education',
-		'Leisure',
-		'Other expenses',
-		'Entertainment',
-	];
-
+	const data = {
+		labels: [
+			'Income',
+			'Main expenses',
+			'Products',
+			'Car',
+			'Self care',
+			'Child care',
+			'Household products',
+			'Education',
+			'Leisure',
+			'Other expenses',
+			'Entertainment',
+		],
+	}
 	const colors = [
 		'#FED057',
 		'#FFD8D0',
@@ -32,7 +33,7 @@ function App() {
 		'#784fca',
 	];
 
-	const expense = 0; 
+	const expense = 0;
 
 	return (
 		<div className={css.container}>
@@ -54,7 +55,7 @@ function App() {
 			</div>
 			<div className={css.doughnutContainer}>
 				<ChartDoughnut
-					categories={categories}
+					data={data}
 					colors={colors}
 					expense={expense}
 				/>
