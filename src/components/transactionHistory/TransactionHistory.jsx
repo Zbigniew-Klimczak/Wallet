@@ -48,7 +48,7 @@ const TransactionHistory = () => {
                   ? styles.transactions__item__positive
                   : styles.transactions__item__negative
               }`}
-              key={item._id}
+              key={item.id}
             >
               <div className={styles.transactions__row}>
                 <div className={styles.transactions__th}>Date</div>
