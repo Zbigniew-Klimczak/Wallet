@@ -8,6 +8,7 @@ const initialState = {
   error: null,
   token: null,
   balance: 0,
+  transactions: [],
 };
 
 export const login = createAsyncThunk("user/login", async (credentials) => {
@@ -35,7 +36,11 @@ export const register = createAsyncThunk("user/register", async (data) => {
 const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    updateTransactions: (state, action) => {
+      state.transactions = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(register.pending, (state) => {
@@ -52,12 +57,12 @@ const userSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(logout.fulfilled, (state) => {
+        localStorage.removeItem("persist:root");
         state.isLoading = false;
         state.user = null;
         state.isAuth = false;
         state.token = null;
         state.balance = 0;
-        localStorage.removeItem("persist:root");
       })
       .addCase(logout.rejected, (state, action) => {
         state.isLoading = false;
@@ -82,5 +87,5 @@ const userSlice = createSlice({
       });
   },
 });
-
+export const { updateTransactions } = userSlice.actions;
 export default userSlice.reducer;

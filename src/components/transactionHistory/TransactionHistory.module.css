@@ -1,0 +1,221 @@
+.transactions__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0px;
+}
+.transactions__item {
+  border-radius: 10px;
+  overflow: hidden;
+}
+.transactions__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  border-bottom: 1px solid #dcdcdf;
+  padding-top: 12px;
+  padding-bottom: 8px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.transactions__item__positive {
+  border-left: 5px solid #24cca7;
+}
+
+.transactions__item__negative {
+  border-left: 5px solid #ff6596;
+}
+
+.transactions__th {
+  font-family: Circe;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #000000;
+}
+
+.transactions__tb {
+  font-family: Circe;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #000000;
+}
+.transactions__red {
+  font-family: Circe;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #ff6596;
+}
+
+.transactions__green {
+  color: #24cca7;
+  font-family: Circe;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.transactions__btn_d {
+  background-color: #24cca7;
+  color: #ffffff;
+  border-radius: 18px;
+  border: none;
+  padding: 4px 12px;
+  font-family: "Circe";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.transactions__btn_d:hover {
+  background-color: #24cca7;
+}
+.transactions__button_edit {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2px;
+  cursor: pointer;
+  width: 11px;
+}
+.transactions__btn_e:hover {
+  color: #24cca7;
+}
+
+.transactions__btn_e {
+  display: flex;
+  cursor: pointer;
+  border-radius: 18px;
+  background-color: #ffffff;
+  border: none;
+  font-family: Circe;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+  letter-spacing: 0.02em;
+  padding: 0;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .transactions {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .transactions__tbl {
+    border-collapse: collapse;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .transactions__tbl_title:first-child {
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+  }
+  .transactions__tbl_title:last-child {
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    padding-right: 0;
+  }
+
+  .transactions__tbl_title {
+    background-color: #ffffff;
+    font-family: "Circe";
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #000000;
+    text-align: left;
+    padding: 16px 20px 15px;
+  }
+  .transactions__tbl_item {
+    font-family: "Circe";
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #000000;
+    padding: 16px 20px 12px;
+  }
+  .transactions__tbl_item:nth-child(2),
+  .transactions__tbl_title:nth-child(2) {
+    text-align: center;
+  }
+  .transactions__tbl_item:nth-child(5),
+  .transactions__tbl_title:nth-child(5) {
+    text-align: right;
+  }
+  .transactions__tbl_string {
+    border-bottom: 1px solid #dcdcdf;
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+  }
+  .transactions__tbl_string:last-child {
+    border-bottom: none;
+    box-shadow: none;
+  }
+  .transactions__tbl_buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 40px;
+    gap: 8px;
+  }
+  .transactions__tbl_btn_edit {
+    border: none;
+    font-size: 20px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .transactions__tbl_btn_edit:hover {
+    color: #24cca7;
+  }
+
+  .transactions__tbl_btn_delete {
+    background-color: #24cca7;
+    border-radius: 18px;
+    border: none;
+    color: #ffffff;
+    font-family: "Circe";
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+    padding: 4px 12px;
+    cursor: pointer;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .transactions__tbl_btn_delete:hover {
+    background-color: #ff6596;
+  }
+
+  .transactions__red {
+    color: #ff6596;
+    white-space: nowrap;
+  }
+  .transactions__green {
+    color: #24cca7;
+    white-space: nowrap;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .transactions {
+    justify-content: flex-end;
+    display: flex;
+  }
+}
