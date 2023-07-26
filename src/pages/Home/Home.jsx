@@ -1,13 +1,13 @@
 // import { useState, useEffect } from 'react';
 // import css from './Home.module.css';
 
+import HeaderForm from "../../components/headerForm/headerForm";
+import HomeAndStatisticForm from "../../components/homeandstatisticForm/homeandstatisticForm";
+import BalanceForm from "../../components/balanceForm/balanceForm";
+import Exchange from "../../components/exchange/Exchange";
+import AddTransaction from "../../components/addtransaction/addtransaction";
+import TransactionHistory from "../../components/transactionHistory/transactionHistory";
 
-import HeaderForm from '../../components/headerForm/headerForm';
-import HomeAndStatisticForm from '../../components/homeandstatisticForm/homeandstatisticForm';
-import BalanceForm from '../../components/balanceForm/balanceForm';
-import Exchange from '../../components/exchange/Exchange';
-import AddTransaction from '../../components/addtransaction/addtransaction'
-  
 const MyComponent = () => {
   return (
     <div>
@@ -16,9 +16,9 @@ const MyComponent = () => {
       <BalanceForm />
       <Exchange />
       <AddTransaction />
+      <TransactionHistory />
     </div>
   );
 };
-
 
 export default MyComponent;
