@@ -71,6 +71,7 @@ const LoginForm = () => {
           <div className={css.input__div}>
             <Field
               className={css.input__password}
+              autoComplete="off"
               type="password"
               id="password"
               name="password"

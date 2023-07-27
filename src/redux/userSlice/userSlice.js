@@ -13,23 +13,29 @@ const initialState = {
 
 export const login = createAsyncThunk("user/login", async (credentials) => {
   const response = await axios.post(
-    "http://localhost:3000/users/login",
+    "https://wallet-backend-efx6.onrender.com/users/login",
     credentials
   );
   return response.data;
 });
 
 export const logout = createAsyncThunk("user/logout", async (token) => {
-  const response = await axios.get("http://localhost:3000/users/logout", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  const response = await axios.get(
+    "https://wallet-backend-efx6.onrender.com/users/logout",
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
   return response.data;
 });
 
 export const register = createAsyncThunk("user/register", async (data) => {
-  const response = await axios.post("http://localhost:3000/users/signup", data);
+  const response = await axios.post(
+    "https://wallet-backend-efx6.onrender.com/users/signup",
+    data
+  );
   return response.data;
 });
 
@@ -50,6 +56,7 @@ const userSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(register.rejected, (state, action) => {
+        console.log(action);
         state.isLoading = false;
         state.error = action.error.message;
       })
@@ -73,7 +80,6 @@ const userSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(login.fulfilled, (state, action) => {
-        console.log(action.payload.data.accessToken);
         state.user = action.payload.data.user.firstName;
         state.isLoading = false;
         state.error = null;

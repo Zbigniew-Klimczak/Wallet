@@ -12,8 +12,6 @@ const RegistrationPage = lazy(() =>
 
 const HomePage = lazy(() => import("./pages/Home/Home.jsx"));
 
-const ReduxExample = lazy(() => import("./pages/example/reduxExample"));
-
 const App = () => {
   return (
     <div>
@@ -21,7 +19,6 @@ const App = () => {
         <Routes>
           <Route path="/" element={<LoginPage />} />
           <Route path="/register" element={<RegistrationPage />} />
-          <Route path="/redux" element={<ReduxExample />} />
           <Route path="/home" element={<HomePage />} />
         </Routes>
       </Suspense>
