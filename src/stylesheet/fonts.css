@@ -4,6 +4,11 @@
 }
 
 @font-face {
+  font-family: "Poppins-Bold";
+  src: url(../assets/fonts/Poppins-Bold.ttf) format("truetype");
+}
+
+@font-face {
   font-family: "Circe";
   font-style: normal;
   font-weight: normal;
@@ -14,8 +19,7 @@
   font-family: "Circe Extra Light";
   font-style: normal;
   font-weight: normal;
-  src: local("Circe Extra Light"),
-    url("../assets/fonts/CRC25.woff") format("woff");
+  src: local("Circe Extra Light"), url("../assets/fonts/CRC25.woff") format("woff");
 }
 
 @font-face {

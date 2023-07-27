@@ -1,38 +1,38 @@
 @font-face {
-    font-family: "Circe";
-    font-style: normal;
-    font-weight: normal;
-    src: local("Circe"), url("../assets/fonts/CRC55.woff") format("woff");
+  font-family: "Circe";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Circe"), url("../../assets/fonts/CRC55.woff") format("woff");
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    margin: 15px;
-    padding-top: 5px;
-    padding-bottom: 10px;
-    background-color: rgb(239, 233, 227);
-    border-radius: 30px;
-    max-width: 395px;
-    height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin: 15px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  background-color: rgb(239, 233, 227);
+  border-radius: 30px;
+  max-width: 395px;
+  height: 80px;
 }
 
 .text {
-    margin-left: 30px;
-    font-family: 'Circe';
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 18px;
-    color: rgba(166, 166, 166, 1);
-    margin-bottom: 0;
+  margin-left: 30px;
+  font-family: "Circe";
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: rgba(166, 166, 166, 1);
+  margin-bottom: 0;
 }
 
 .headertext {
-    margin-top: 0px;
-    margin-left: 30px;
-    font-family: 'Poppins';
-    font-weight: 700;
-    font-size: 30px;
-    line-height: 45px;
+  margin-top: 0px;
+  margin-left: 30px;
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 45px;
 }
