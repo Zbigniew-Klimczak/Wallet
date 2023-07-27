@@ -26,11 +26,14 @@ const TransactionHistory = () => {
       if (token === null) {
         return;
       }
-      const response = await axios.get("http://localhost:3000/users/current", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.get(
+        "https://wallet-backend-efx6.onrender.com/users/current",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       setTransactions(() => response.data.data.transactions);
       dispatch(updateTransactions(response.data.data.transactions));
     };

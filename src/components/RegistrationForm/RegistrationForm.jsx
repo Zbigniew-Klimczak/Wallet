@@ -85,6 +85,7 @@ const RegistrationForm = () => {
                 id="password"
                 name="password"
                 placeholder="Password"
+                autoComplete="off"
               />
               <ErrorMessage name="password" component="div">
                 {(msg) => <div>{msg}</div>}
@@ -98,6 +99,7 @@ const RegistrationForm = () => {
                 id="confirmPassword"
                 name="confirmPassword"
                 placeholder="Confirm Password"
+                autoComplete="off"
               />
               <ErrorMessage name="confirmPassword" component="div">
                 {(msg) => <div>{msg}</div>}
