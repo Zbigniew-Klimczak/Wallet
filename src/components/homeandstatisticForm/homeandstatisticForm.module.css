@@ -1,44 +1,35 @@
-@font-face {
-    font-family: 'Poppins';
-    src: url(../assets/fonts/Poppins-Regular.ttf) format('truetype');
-}
-
-.home-button {
-    cursor: pointer;
-    margin-bottom: 10px;
-    display: block;
-    border: none;
-    color: black;
-    background-color: transparent;
-    font-family: 'Poppins';
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 27px;
-}
-
-.statistics-button {
-    cursor: pointer;
-    margin-bottom: 10px;
-    display: block;
-    border: none;
-    color: black;
-    background-color: transparent;
-    font-family: 'Poppins';
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 27px;
-}
-
-
-.image{
-    height: 24px;
-    width: 24px;
+.container {
+    margin: 20px;
+    justify-content: space-between;
 }
 
 .buttonContainer {
     display: flex;
-    cursor: pointer;
+    align-items: center;
+    /* margin-right: 10px; */
 }
- .container {
-    margin: 20px;
- }
+
+.image {
+    height: 24px;
+    width: 24px;
+}
+
+.home-button,
+.statistics-button {
+    /* margin-right: 10px; */
+    cursor: pointer;
+    border: none;
+    color: black;
+    background-color: transparent;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    font-family: 'Poppins';
+    display: block;
+}
+
+.doughnutContainer {
+    margin-left: auto;
+    display: flex;
+    flex-direction: row-reverse;
+}
