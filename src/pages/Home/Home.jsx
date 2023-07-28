@@ -7,17 +7,21 @@ import BalanceForm from "../../components/balanceForm/balanceForm";
 import Exchange from "../../components/exchange/Exchange";
 import AddTransaction from "../../components/addtransaction/addtransaction";
 import TransactionHistory from "../../components/transactionHistory/transactionHistory";
+import LogoutModal from "../../components/logoutModal/logoutModal";
 
 const MyComponent = () => {
   return (
-    <div className={css.container}>
-      <HeaderForm />
-      <HomeAndStatisticForm />
-      <BalanceForm />
-      <Exchange />
-      <AddTransaction />
-      <TransactionHistory />
-    </div>
+    <>
+      <LogoutModal />
+      <div className={css.container}>
+        <HeaderForm />
+        <HomeAndStatisticForm />
+        <BalanceForm />
+        <Exchange />
+        <AddTransaction />
+        <TransactionHistory />
+      </div>
+    </>
   );
 };
 
