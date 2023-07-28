@@ -1,5 +1,5 @@
 // import { useState, useEffect } from 'react';
-// import css from './Home.module.css';
+import css from "./Home.module.css";
 
 import HeaderForm from "../../components/headerForm/headerForm";
 import HomeAndStatisticForm from "../../components/homeandstatisticForm/homeandstatisticForm";
@@ -10,7 +10,7 @@ import TransactionHistory from "../../components/transactionHistory/transactionH
 
 const MyComponent = () => {
   return (
-    <div>
+    <div className={css.container}>
       <HeaderForm />
       <HomeAndStatisticForm />
       <BalanceForm />
