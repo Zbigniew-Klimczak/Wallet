@@ -1,6 +1,7 @@
 import "./App.css";
 import { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
+import ProtectedRoute from "./components/Routes/ProtectedRoute";
 // import { useEffect } from "react";
 // import { useDispatch } from "react-redux";
 
@@ -19,7 +20,14 @@ const App = () => {
         <Routes>
           <Route path="/" element={<LoginPage />} />
           <Route path="/register" element={<RegistrationPage />} />
-          <Route path="/home" element={<HomePage />} />
+          <Route
+            path="/home"
+            element={
+              <ProtectedRoute>
+                <HomePage />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </Suspense>
     </div>
