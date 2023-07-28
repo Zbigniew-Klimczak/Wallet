@@ -17,11 +17,10 @@ const LoginForm = () => {
   });
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { user, token, error } = useSelector((state) => state.user);
+  const { token, error } = useSelector((state) => state.user);
 
   useEffect(() => {
     if (token) {
-      toast(`Hello ${user}`);
       navigate("/home");
     }
     if (error !== null) {
