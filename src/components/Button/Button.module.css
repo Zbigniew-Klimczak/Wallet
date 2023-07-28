@@ -1,0 +1,44 @@
+.primary,
+.secondary {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 300px;
+  max-height: 50px;
+  padding: 13px 55px;
+  font-family: "Circe", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 20px;
+  transition: all 250ms ease;
+  cursor: pointer;
+}
+
+.primary {
+  color: #ffffff;
+  background-color: #24cca7;
+  border: 1px solid #ffffff;
+}
+
+.secondary {
+  color: #4a56e2;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 1px solid #4a56e2;
+}
+
+.primary:hover,
+.primary:focus,
+.secondary:hover,
+.secondary:focus {
+  transform: scale(1.02);
+}
+
+@media screen and (min-width: 480px) {
+  .primary,
+  .secondary {
+    padding: 13px 65px;
+  }
+}
