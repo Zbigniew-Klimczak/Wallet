@@ -52,9 +52,6 @@ function App() {
         <img className={css.image} src={Statistics} alt="icon" />
         <button className={css["statistics-button"]}>Statistics</button>
       </StyledNavLink>
-      <div className={css.doughnutContainer}>
-        <ChartDoughnut data={data} colors={colors} expense={expense} />
-      </div>
     </div>
   );
 }

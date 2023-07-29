@@ -8,10 +8,13 @@ import Exchange from "../../components/exchange/Exchange";
 import AddTransaction from "../../components/addtransaction/addtransaction";
 import TransactionHistory from "../../components/transactionHistory/transactionHistory";
 import LogoutModal from "../../components/logoutModal/logoutModal";
+import Chart from "../../components/Chart/Chart";
+
 
 const MyComponent = () => {
   const { isLogoutModal } = useSelector((state) => state.user);
   return (
+
     <>
       {isLogoutModal && <LogoutModal />}
       <div className={css.container}>
@@ -21,8 +24,10 @@ const MyComponent = () => {
         <Exchange />
         <AddTransaction />
         <TransactionHistory />
+    <Chart />
       </div>
     </>
+
   );
 };
 
