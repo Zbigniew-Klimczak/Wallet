@@ -7,6 +7,7 @@ import BalanceForm from "../../components/balanceForm/balanceForm";
 import Exchange from "../../components/exchange/Exchange";
 import AddTransaction from "../../components/addtransaction/addtransaction";
 import TransactionHistory from "../../components/transactionHistory/transactionHistory";
+import Chart from "../../components/Chart/Chart";
 
 const MyComponent = () => {
   return (
@@ -17,6 +18,7 @@ const MyComponent = () => {
       <Exchange />
       <AddTransaction />
       <TransactionHistory />
+      <Chart />
     </div>
   );
 };
