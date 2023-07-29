@@ -1,20 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../redux/userSlice/userSlice";
+import { setLogoutModal } from "../../redux/userSlice/userSlice";
 import headerLogo from "../../images/headerLogo.png";
 import exitIcon from "../../SVG/exit.svg";
 import css from "./headerForm.module.css";
 
 const Header = () => {
   const dispatch = useDispatch();
-  const { user, token } = useSelector((state) => state.user);
-
-  // Obsługuje wylogowanie użytkownika po kliknięciu przycisku "Exit"
-  const handleLogout = () => {
-    dispatch(logout(token));
-  };
-
-  const handleSVGClick = () => {
-    dispatch(logout(token));
+  const { user } = useSelector((state) => state.user);
+  const handleLogoutModal = () => {
+    dispatch(setLogoutModal(true));
   };
 
   return (
@@ -34,9 +28,9 @@ const Header = () => {
           className={css.exitIcon}
           src={exitIcon}
           alt="exit"
-          onClick={handleSVGClick}
+          onClick={handleLogoutModal}
         />
-        <button className={css.exitButton} onClick={handleLogout}>
+        <button className={css.exitButton} onClick={handleLogoutModal}>
           Exit
         </button>
       </div>

@@ -1,6 +1,6 @@
 // import { useState, useEffect } from 'react';
 import css from "./Home.module.css";
-
+import { useDispatch, useSelector } from "react-redux";
 import HeaderForm from "../../components/headerForm/headerForm";
 import HomeAndStatisticForm from "../../components/homeandstatisticForm/homeandstatisticForm";
 import BalanceForm from "../../components/balanceForm/balanceForm";
@@ -10,9 +10,10 @@ import TransactionHistory from "../../components/transactionHistory/transactionH
 import LogoutModal from "../../components/logoutModal/logoutModal";
 
 const MyComponent = () => {
+  const { isLogoutModal } = useSelector((state) => state.user);
   return (
     <>
-      <LogoutModal />
+      {isLogoutModal && <LogoutModal />}
       <div className={css.container}>
         <HeaderForm />
         <HomeAndStatisticForm />

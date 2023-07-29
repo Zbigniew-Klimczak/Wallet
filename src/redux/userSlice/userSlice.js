@@ -5,6 +5,7 @@ const initialState = {
   user: null,
   isAuth: false,
   isLoading: false,
+  isLogoutModal: false,
   error: null,
   token: null,
   balance: 0,
@@ -45,6 +46,9 @@ const userSlice = createSlice({
   reducers: {
     updateTransactions: (state, action) => {
       state.transactions = action.payload;
+    },
+    setLogoutModal: (state, action) => {
+      state.isLogoutModal = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -93,5 +97,6 @@ const userSlice = createSlice({
       });
   },
 });
-export const { updateTransactions } = userSlice.actions;
+
+export const { updateTransactions, setLogoutModal } = userSlice.actions;
 export default userSlice.reducer;
