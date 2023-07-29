@@ -6,11 +6,13 @@ import ProtectedRoute from "./components/Routes/ProtectedRoute";
 // import { useDispatch } from "react-redux";
 
 const LoginPage = lazy(() => import("./pages/Login/Login"));
-
 const RegistrationPage = lazy(() =>
   import("./pages/Registration/Registration")
 );
-
+const TransactionsHistory = lazy(() =>
+  import("./pages/TransactionsHistory/TransactionsHistory")
+);
+const Statistics = lazy(() => import("./pages/Statistics/Statistics"));
 const HomePage = lazy(() => import("./pages/Home/Home.jsx"));
 
 const App = () => {
@@ -27,7 +29,10 @@ const App = () => {
                 <HomePage />
               </ProtectedRoute>
             }
-          />
+          >
+            <Route path="" element={<TransactionsHistory />} />
+            <Route path="statistics" element={<Statistics />} />
+          </Route>
         </Routes>
       </Suspense>
     </div>
