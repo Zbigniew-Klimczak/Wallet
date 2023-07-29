@@ -31,8 +31,15 @@ const App = () => {
             }
           >
             <Route path="" element={<TransactionsHistory />} />
-            <Route path="statistics" element={<Statistics />} />
           </Route>
+          <Route
+            path="/statistics"
+            element={
+              <ProtectedRoute>
+                <Statistics />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </Suspense>
     </div>
