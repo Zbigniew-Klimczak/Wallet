@@ -17,7 +17,7 @@ function homeAndStatisticForm() {
         <img className={css.image} src={Home} alt="icon" />
         <button className={css["home-button"]}>Home</button>
       </StyledNavLink>
-      <StyledNavLink to="/home/statistics" className={css.buttonContainer}>
+      <StyledNavLink to="/statistics" className={css.buttonContainer}>
         <img className={css.image} src={Statistics} alt="icon" />
         <button className={css["statistics-button"]}>Statistics</button>
       </StyledNavLink>
