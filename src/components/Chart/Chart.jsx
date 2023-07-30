@@ -3,7 +3,7 @@ import css from "./Chart.module.css";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const ChartDoughnut = () => {
   ChartJS.register(ArcElement, Tooltip, Legend);
@@ -13,6 +13,11 @@ const ChartDoughnut = () => {
   const [money, setMoney] = useState([]);
   const [allMoney, setAllMoney] = useState(0);
   const yes = true;
+
+  useEffect(() => {
+    getCategories();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const getCategories = async () => {
     const response = await axios.get(
@@ -68,7 +73,6 @@ const ChartDoughnut = () => {
 
   return (
     <div className={css.container}>
-      <button onClick={getCategories}>fetch</button>
       {yes ? (
         <>
           <Doughnut data={data} options={options} className={css.doughnut} />
