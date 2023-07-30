@@ -23,25 +23,17 @@ const AuthRedirect = ({ redirectOnAuth, redirectTo, children }) => {
     if (!firstOnPage) {
       if (!userState.isLoading) {
         if (userState.accessToken !== null && userState.isAuth) {
-          console.log("Access Token is not null");
           if (redirectOnAuth) {
-            console.log("Should redirect when auth, redirecting...", redirectTo);
             navigate(redirectTo);
           } else {
-            console.log("Should redirect when not auth, showing content...");
             setReturnComponent(true);
           }
         } else if (userState.refreshToken !== null && userState.isAuth) {
-          console.log("Access token is null, refresh token is not null, refreshing tokens");
-          console.log("Refresh token is: ", userState.refreshToken);
           dispatch(refreshTokens(userState.refreshToken));
         } else {
-          console.log("Both tokens are null or user is not authenticated");
           if (!redirectOnAuth) {
-            console.log("Should redirect when not auth, redirecting...");
             navigate("/");
           } else {
-            console.log("Should redirect when auth, showing content...");
             setReturnComponent(true);
           }
         }
@@ -63,13 +55,10 @@ const AuthRedirect = ({ redirectOnAuth, redirectTo, children }) => {
     if (firstOnPage) {
       setFirstOnPage(false);
       if (userState.isAuth) {
-        console.log("Auth is not false: dispatch updateInfo");
         dispatch(updateInfo(userState.accessToken));
       } else if (redirectOnAuth) {
-        console.log("Auth is false, should redirect on auth: showing content...");
         setReturnComponent(true);
       } else {
-        console.log("Auth is false, should redirect on not auth: redirecting to: ", redirectTo);
         navigate(redirectTo);
       }
     }

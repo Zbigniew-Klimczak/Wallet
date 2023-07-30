@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearError, login } from "../../redux/userSlice/userSlice";
 import toast, { Toaster } from "react-hot-toast";
 import { useEffect } from "react";
-import { Link /*, useNavigate*/ } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // import { envelope } from "../../SVG/envelope.svg";
 const LoginForm = () => {
@@ -15,20 +15,16 @@ const LoginForm = () => {
     email: Yup.string().email("Invalid email").required("Required"),
     password: Yup.string().required("Required"),
   });
-  // const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { /*token, */ error } = useSelector((state) => state.user);
+  const { error } = useSelector((state) => state.user);
 
   useEffect(() => {
-    // if (token) {
-    //   navigate("/home");
-    // }
     if (error !== null) {
       toast("Zły email lub hasło");
       dispatch(clearError());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [/*token, */ error]);
+  }, [error]);
 
   return (
     <div className={css.container}>

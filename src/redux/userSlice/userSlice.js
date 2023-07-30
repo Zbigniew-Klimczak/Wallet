@@ -48,7 +48,6 @@ export const updateInfo = createAsyncThunk("user/current", async (token) => {
 });
 
 export const refreshTokens = createAsyncThunk("user/tokens", async (token) => {
-  console.log("REFRESH WITH TOKEN: ", token);
   const response = await axios.post(
     "https://wallet-backend-efx6.onrender.com/users/tokens",
     {},
