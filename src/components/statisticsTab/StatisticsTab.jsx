@@ -62,7 +62,7 @@ const StatisticsTab = () => {
                   className={css.squere}
                   style={{ backgroundColor: `${colors[index]}` }}
                 ></div>
-                <p>{category}</p>
+                <p>{category.charAt(0).toUpperCase() + category.slice(1)}</p>
               </div>
               <p>{money[index]}</p>
             </li>
