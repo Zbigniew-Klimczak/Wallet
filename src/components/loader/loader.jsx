@@ -1,28 +1,27 @@
+
+import { useSelector } from 'react-redux';
 import { ThreeDots } from 'react-loader-spinner';
 import css from './loader.module.css';
 
-const Loader=()=> {
-    return (<div className= {
-            css.backdrop
-        }
+const GlobalLoader = () => {
+  const isLoading = useSelector(state => state.user.isLoading); // Zmiana na odpowiedni klucz stanu zależnie od Twojej konfiguracji
 
-        > <div className= {
-            css.loader
-        }
+  if (!isLoading) return null;
 
-        > <ThreeDots height="100"
-        width="100"
-        radius="9"
-        color="#384ab1"
-        ariaLabel="three-dots-loading"
+  return (
+    <div className={css.backdrop}>
+      <div className={css.loader}>
+        <ThreeDots
+          height={100}
+          width={100}
+          radius={9}
+          color="#24CCA7"
+          ariaLabel="three-dots-loading"
+          visible={true}
+        />
+      </div>
+    </div>
+  );
+};
 
-        visible= {
-            true
-        }
-
-        /> </div> </div>);
-}
-
-;
-
-export default Loader;
+export default GlobalLoader;
