@@ -40,8 +40,8 @@ const StatisticsTab = () => {
     const values = Object.values(response.data.data);
     setCategories(keys.slice(2, -1));
     setMoney(values.slice(2, -1));
-    setExpenses(values[0]);
-    setIncomes(values[1]);
+    setExpenses(values[1]);
+    setIncomes(values[0]);
     console.log(values);
     console.log(keys);
     // setAllMoney(values.reduce((acc, value) => acc + value, 0));
