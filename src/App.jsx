@@ -14,6 +14,7 @@ const TransactionsHistory = lazy(() =>
 );
 const Statistics = lazy(() => import("./pages/Statistics/Statistics"));
 const HomePage = lazy(() => import("./pages/Home/Home.jsx"));
+const Exchange = lazy(() => import("./components/exchange/Exchange"));
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
           >
             <Route path="" element={<TransactionsHistory />} />
             <Route path="statistics" element={<Statistics />} />
+            <Route path="exchange" element={<Exchange />} />
           </Route>
         </Routes>
       </Suspense>

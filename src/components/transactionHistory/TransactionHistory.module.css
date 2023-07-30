@@ -1,3 +1,7 @@
+.transactions {
+  width: 100%;
+  overflow: scroll;
+}
 .transactions__list {
   display: flex;
   flex-direction: column;

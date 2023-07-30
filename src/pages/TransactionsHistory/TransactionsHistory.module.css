@@ -1,0 +1,16 @@
+.container {
+  width: 90%;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+@media (min-width: 1280px) {
+  .container {
+    padding-top: 46px;
+    padding-left: 69px;
+    padding-right: 16px;
+    border-left: 1px solid #e7e5f2;
+  }
+}

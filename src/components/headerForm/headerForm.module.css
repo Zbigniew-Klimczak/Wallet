@@ -2,18 +2,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: "Poppins";
-  font-weight: 700;
-  font-size: 18px;
   line-height: 45px;
   background-color: #ffffff;
   width: 100%;
+  padding: 20px 15px;
+  box-sizing: border-box;
 }
 
 .left-side {
   display: flex;
   align-items: center;
-  margin-left: 10px;
 }
 
 .logo-container {
@@ -30,7 +28,6 @@
 .right-side {
   display: flex;
   align-items: center;
-  margin-right: 15px;
 }
 
 .exitIcon {
@@ -42,11 +39,12 @@
 
 .exitButton {
   border: none;
+  font-family: Circe;
   background-color: transparent;
   font-size: 18px;
   cursor: pointer;
   color: rgba(189, 189, 189, 1);
-  display:none;
+  display: none;
 }
 
 .name-container {
@@ -56,10 +54,19 @@
 
 .nameButton {
   border: none;
+  font-family: Circe;
   background-color: transparent;
   font-size: 18px;
   cursor: pointer;
   color: rgba(189, 189, 189, 1);
+}
+.wallet {
+  margin: 0;
+  font-family: Poppins-Bold;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
 
 @media (min-width: 768px) {
@@ -69,25 +76,29 @@
     background-color: #ccc;
     margin-right: 10px;
   }
-        .exitButton {
-          display: initial;
-        
-    }
-  .header{
+  .exitButton {
+    display: initial;
+  }
+  .header {
     font-size: 30px;
   }
-    .logo {
-      width: 40px;
-      height: 40px;
-      margin-right: 20px;
-    }
-    .left-side {
-      margin-left: 30px;
-    }
-        .right-side {
-          margin-right: 30px;
-        }
+  .logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+  }
+  .left-side {
+    margin-left: 30px;
+  }
+  .right-side {
+    margin-right: 30px;
+  }
+  .wallet {
+    font-size: 30px;
+  }
 }
-
-  
-
+@media (min-width: 768px) {
+  .header {
+    max-width: 1280px;
+  }
+}

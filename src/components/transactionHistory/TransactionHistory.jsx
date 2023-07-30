@@ -40,9 +40,10 @@ const TransactionHistory = () => {
     getTransactions();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  if (windowWidth < 768) {
-    return (
-      <div className={styles.transactions}>
+
+  return (
+    <div className={styles.transactions}>
+      {windowWidth < 768 ? (
         <ul className={styles.transactions__list}>
           {transactions.map((item) => (
             <li
@@ -123,84 +124,81 @@ const TransactionHistory = () => {
             </li>
           ))}
         </ul>
-        )
-      </div>
-    );
-  }
-
-  return (
-    <div className={styles.transactions}>
-      <table className={styles.transactions__tbl}>
-        <thead className={styles.transactions__thead}>
-          <tr className={styles.transactions__thr}>
-            <th className={styles.transactions__tbl_title}>Date</th>
-            <th className={styles.transactions__tbl_title}>Type</th>
-            <th className={styles.transactions__tbl_title}>Category</th>
-            <th className={styles.transactions__tbl_title}>Comment</th>
-            <th className={styles.transactions__tbl_title}>Sum</th>
-            <th className={styles.transactions__tbl_title}></th>
-          </tr>
-        </thead>
-        <tbody className={styles.transactions__tbody}>
-          {transactions.map((item) => (
-            <tr className={styles.transactions__tbl_string} key={item.id}>
-              <td className={styles.transactions__tbl_item}>
-                {formatDate(item.date)}
-              </td>
-              <td className={styles.transactions__tbl_item}>
-                {item.type === "Income" ? "+" : "-"}
-              </td>
-              <td className={styles.transactions__tbl_item}>{item.category}</td>
-              <td className={styles.transactions__tbl_item}>
-                {item.comment ?? "-"}
-              </td>
-              <td className={styles.transactions__tbl_item}>
-                <div
-                  className={
-                    item.type === "Income"
-                      ? styles.transactions__green
-                      : styles.transactions__red
-                  }
-                >
-                  {item.value}
-                </div>
-              </td>
-              <td className={styles.transactions__tbl_item}>
-                <div className={styles.transactions__tbl_buttons}>
-                  <button className={styles.transactions__tbl_btn_edit}>
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 14 14"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g clipPath="url(#clip0_37400_43)">
-                        <path
-                          d="M10.5 5.83343L8.16666 3.5001M1.45831 12.5418L3.43253 12.3224C3.67373 12.2956 3.79433 12.2822 3.90706 12.2457C4.00707 12.2133 4.10224 12.1676 4.19 12.1097C4.28891 12.0445 4.37471 11.9587 4.54632 11.7871L12.25 4.08343C12.8943 3.4391 12.8943 2.39443 12.25 1.75009C11.6057 1.10576 10.561 1.10576 9.91666 1.75009L2.21299 9.45375C2.04138 9.62536 1.95558 9.71116 1.89035 9.81008C1.83248 9.89783 1.78674 9.99301 1.75436 10.093C1.71787 10.2057 1.70447 10.3263 1.67767 10.5675L1.45831 12.5418Z"
-                          stroke="black"
-                          strokeOpacity="0.8"
-                          strokeWidth="1.2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_37400_43">
-                          <rect width="14" height="14" fill="white" />
-                        </clipPath>
-                      </defs>
-                    </svg>
-                  </button>
-                  <button className={styles.transactions__tbl_btn_delete}>
-                    Delete
-                  </button>
-                </div>
-              </td>
+      ) : (
+        <table className={styles.transactions__tbl}>
+          <thead className={styles.transactions__thead}>
+            <tr className={styles.transactions__thr}>
+              <th className={styles.transactions__tbl_title}>Date</th>
+              <th className={styles.transactions__tbl_title}>Type</th>
+              <th className={styles.transactions__tbl_title}>Category</th>
+              <th className={styles.transactions__tbl_title}>Comment</th>
+              <th className={styles.transactions__tbl_title}>Sum</th>
+              <th className={styles.transactions__tbl_title}></th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody className={styles.transactions__tbody}>
+            {transactions.map((item) => (
+              <tr className={styles.transactions__tbl_string} key={item.id}>
+                <td className={styles.transactions__tbl_item}>
+                  {formatDate(item.date)}
+                </td>
+                <td className={styles.transactions__tbl_item}>
+                  {item.type === "Income" ? "+" : "-"}
+                </td>
+                <td className={styles.transactions__tbl_item}>
+                  {item.category}
+                </td>
+                <td className={styles.transactions__tbl_item}>
+                  {item.comment ?? "-"}
+                </td>
+                <td className={styles.transactions__tbl_item}>
+                  <div
+                    className={
+                      item.type === "Income"
+                        ? styles.transactions__green
+                        : styles.transactions__red
+                    }
+                  >
+                    {item.value}
+                  </div>
+                </td>
+                <td className={styles.transactions__tbl_item}>
+                  <div className={styles.transactions__tbl_buttons}>
+                    <button className={styles.transactions__tbl_btn_edit}>
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 14 14"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <g clipPath="url(#clip0_37400_43)">
+                          <path
+                            d="M10.5 5.83343L8.16666 3.5001M1.45831 12.5418L3.43253 12.3224C3.67373 12.2956 3.79433 12.2822 3.90706 12.2457C4.00707 12.2133 4.10224 12.1676 4.19 12.1097C4.28891 12.0445 4.37471 11.9587 4.54632 11.7871L12.25 4.08343C12.8943 3.4391 12.8943 2.39443 12.25 1.75009C11.6057 1.10576 10.561 1.10576 9.91666 1.75009L2.21299 9.45375C2.04138 9.62536 1.95558 9.71116 1.89035 9.81008C1.83248 9.89783 1.78674 9.99301 1.75436 10.093C1.71787 10.2057 1.70447 10.3263 1.67767 10.5675L1.45831 12.5418Z"
+                            stroke="black"
+                            strokeOpacity="0.8"
+                            strokeWidth="1.2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_37400_43">
+                            <rect width="14" height="14" fill="white" />
+                          </clipPath>
+                        </defs>
+                      </svg>
+                    </button>
+                    <button className={styles.transactions__tbl_btn_delete}>
+                      Delete
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 };

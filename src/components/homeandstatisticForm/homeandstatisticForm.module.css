@@ -1,6 +1,5 @@
 .container {
   width: min-content;
-  margin: 40px;
   justify-content: space-between;
 }
 
@@ -21,6 +20,8 @@
 .image {
   height: 24px;
   width: 24px;
+  background-color: white;
+  border-radius: 10px;
 }
 
 .home-button,
@@ -38,36 +39,32 @@
 }
 
 @media (max-width: 767px) {
-
   .home-button,
   .statistics-button {
     display: none;
   }
 
-  .buttonContainer{
+  .buttonContainer {
+    display: flex;
+    align-items: center;
+  }
+  .buttonWrapper {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: 20px;
+    justify-content: space-between;
+    gap: 30px;
   }
-    .buttonWrapper {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .image {
-      height: 44px;
-      width: 44px;
-    }
-    .container {
-          width: 100%;
-          margin: 5px;
-          display: flex;
-          justify-content: center;
-          
-        }
-    .exchange-icon {
-      display: none;
-    }
+  .image {
+    height: 44px;
+    width: 44px;
+  }
+  .container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .exchange-icon {
+    display: none;
+  }
 }
