@@ -1,7 +1,8 @@
-// import { useState, useEffect } from 'react';
+
+import { useState, useEffect } from 'react';
+import { useSelector } from "react-redux";
 import css from "./Home.module.css";
 import { Outlet } from "react-router-dom";
-import { useSelector } from "react-redux";
 import HeaderForm from "../../components/headerForm/headerForm";
 import HomeAndStatistic from "../../components/homeandstatisticForm/homeandstatisticForm";
 import BalanceForm from "../../components/balanceForm/balanceForm";
@@ -10,18 +11,40 @@ import LogoutModal from "../../components/logoutModal/logoutModal";
 
 const Home = () => {
   const { isLogoutModal } = useSelector((state) => state.user);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <>
       {isLogoutModal && <LogoutModal />}
       <div className={css.container}>
         <HeaderForm />
-        <div className={css.background}>
+        <div className={css.content}>
           <div className={css.leftSide}>
-            <HomeAndStatistic />
-            <BalanceForm />
-            <Exchange />
+            <div className={css.leftSideTablet}>
+              <HomeAndStatistic />
+              <BalanceForm />
+            </div>
+            {windowWidth >= 768 && ( 
+              <div className={css.exchange}>
+                <Exchange />
+              </div>
+            )}
           </div>
-          <Outlet />
+          <div className={css.rightSide}>
+            <Outlet />
+          </div>
         </div>
       </div>
     </>
