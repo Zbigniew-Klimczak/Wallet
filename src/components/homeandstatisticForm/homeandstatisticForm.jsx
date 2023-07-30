@@ -1,4 +1,3 @@
-
 import css from "./homeAndStatisticForm.module.css";
 import Home from "../../images/homemobile.png";
 import Statistics from "../../images/statisticmobile.png";
@@ -9,11 +8,12 @@ import { styled } from "styled-components";
 const StyledNavLink = styled(NavLink)`
   &.active {
     font-family: "Poppins-Bold";
+    filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
   }
 `;
 
 function homeAndStatisticForm() {
-  const isMobileView = window.innerWidth  >  766;
+  const isMobileView = window.innerWidth > 766;
 
   return (
     <div className={css.container}>

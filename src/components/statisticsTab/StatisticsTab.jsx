@@ -42,13 +42,11 @@ const StatisticsTab = () => {
     setMoney(values.slice(2, -1));
     setExpenses(values[1]);
     setIncomes(values[0]);
-    console.log(values);
-    console.log(keys);
     // setAllMoney(values.reduce((acc, value) => acc + value, 0));
   };
 
   return (
-    <div className="statisticsTab">
+    <div className={css.container}>
       <div className={css.header}>
         <p className={css.header__text}>Category</p>
         <p className={css.header__text}>Sum</p>

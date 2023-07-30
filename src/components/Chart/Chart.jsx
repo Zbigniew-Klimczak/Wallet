@@ -32,8 +32,6 @@ const ChartDoughnut = () => {
     const values = Object.values(response.data.data);
     setCategories(keys);
     setMoney(values);
-    console.log(values);
-    console.log(keys);
     setAllMoney(values.reduce((acc, value) => acc + value, 0));
   };
 
@@ -73,6 +71,7 @@ const ChartDoughnut = () => {
 
   return (
     <div className={css.container}>
+      <h2 className={css.title}>Statistics</h2>
       {yes ? (
         <>
           <Doughnut data={data} options={options} className={css.doughnut} />

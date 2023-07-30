@@ -1,5 +1,5 @@
 .container {
-  width: 280px;
+  width: 90%;
   height: 174px;
   background-color: #4a56e2;
   border-radius: 30px;
@@ -7,7 +7,6 @@
   background-image: url("../../images/exchangeBgSmall.png");
   background-repeat: no-repeat;
   background-position: left bottom;
-  margin: 40px;
 }
 
 .listHeader {
@@ -15,7 +14,7 @@
   padding: 0;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   list-style: none;
   width: 100%;
   padding-left: 20px;
@@ -42,7 +41,7 @@
 }
 .list {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -88,7 +87,7 @@
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1280px) {
   .container {
     width: 393px;
     height: 331px;
