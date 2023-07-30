@@ -16,7 +16,7 @@ const Header = () => {
       <div className={css["left-side"]}>
         <div className={css["logo-container"]}>
           <img className={css.logo} src={headerLogo} alt="logo" />
-          <h1>Wallet</h1>
+          <h1 className={css.wallet}>Wallet</h1>
         </div>
       </div>
       <div className={css["right-side"]}>
