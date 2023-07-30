@@ -4,10 +4,10 @@ import css from "./LoginForm.module.css";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../redux/userSlice/userSlice";
+import { clearError, login } from "../../redux/userSlice/userSlice";
 import toast, { Toaster } from "react-hot-toast";
 import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link /*, useNavigate*/ } from "react-router-dom";
 
 // import { envelope } from "../../SVG/envelope.svg";
 const LoginForm = () => {
@@ -15,19 +15,20 @@ const LoginForm = () => {
     email: Yup.string().email("Invalid email").required("Required"),
     password: Yup.string().required("Required"),
   });
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { token, error } = useSelector((state) => state.user);
+  const { /*token, */ error } = useSelector((state) => state.user);
 
   useEffect(() => {
-    if (token) {
-      navigate("/home");
-    }
+    // if (token) {
+    //   navigate("/home");
+    // }
     if (error !== null) {
       toast("Zły email lub hasło");
+      dispatch(clearError());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [token, error]);
+  }, [/*token, */ error]);
 
   return (
     <div className={css.container}>
@@ -53,16 +54,10 @@ const LoginForm = () => {
         validationSchema={SignupSchema}
         onSubmit={(values) => {
           dispatch(login(values));
-        }}
-      >
+        }}>
         <Form className={css.form}>
           <div className={css.input__div}>
-            <Field
-              className={css.input__email}
-              id="email"
-              name="email"
-              placeholder="Email"
-            />
+            <Field className={css.input__email} id="email" name="email" placeholder="Email" />
             <ErrorMessage name="email" component="Field">
               {(msg) => <div>{msg}</div>}
             </ErrorMessage>
