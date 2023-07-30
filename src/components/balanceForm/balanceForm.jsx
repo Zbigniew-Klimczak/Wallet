@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import css from "./balanceForm.module.css";
 
-function App() {
+function Balance() {
   const { balance } = useSelector((state) => state.user);
   return (
     <div className={css["container"]}>
@@ -11,4 +11,4 @@ function App() {
   );
 }
 
-export default App;
+export default Balance;

@@ -5,6 +5,8 @@ const initialState = {
   user: null,
   isAuth: false,
   isLoading: false,
+  isLogoutModal: false,
+
   error: null,
   token: null,
   refreshToken: null,
@@ -69,6 +71,9 @@ const userSlice = createSlice({
     },
     clearError: (state) => {
       state.error = null;
+    },
+    setLogoutModal: (state, action) => {
+      state.isLogoutModal = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -158,5 +163,7 @@ const userSlice = createSlice({
       });
   },
 });
-export const { updateTransactions, clearError } = userSlice.actions;
+
+
+export const { updateTransactions, setLogoutModal, clearError } = userSlice.actions;
 export default userSlice.reducer;

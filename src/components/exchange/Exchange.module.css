@@ -7,6 +7,7 @@
   background-image: url("../../images/exchangeBgSmall.png");
   background-repeat: no-repeat;
   background-position: left bottom;
+  margin: 40px;
 }
 
 .listHeader {

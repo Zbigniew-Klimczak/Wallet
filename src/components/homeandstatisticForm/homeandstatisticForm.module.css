@@ -1,13 +1,21 @@
 .container {
-  margin: 20px;
+  width: min-content;
+  margin: 40px;
   justify-content: space-between;
 }
 
 .buttonContainer {
+  width: min-content;
   display: flex;
   align-items: center;
   font-family: "Poppins";
+  text-decoration: none;
+  transition: transform 0.2s ease;
   /* margin-right: 10px; */
+}
+
+.buttonContainer:hover {
+  transform: scale(1.05);
 }
 
 .image {
@@ -17,7 +25,7 @@
 
 .home-button,
 .statistics-button {
-  /* margin-right: 10px; */
+  margin-left: 15px;
   cursor: pointer;
   border: none;
   color: black;
@@ -29,8 +37,37 @@
   display: block;
 }
 
-.doughnutContainer {
-  margin-left: auto;
-  display: flex;
-  flex-direction: row-reverse;
+@media (max-width: 767px) {
+
+  .home-button,
+  .statistics-button {
+    display: none;
+  }
+
+  .buttonContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 20px;
+  }
+    .buttonWrapper {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .image {
+      height: 44px;
+      width: 44px;
+    }
+    .container {
+          width: 100%;
+          margin: 5px;
+          display: flex;
+          justify-content: center;
+          
+        }
+    .exchange-icon {
+      display: none;
+    }
 }

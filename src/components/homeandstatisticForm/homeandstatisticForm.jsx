@@ -1,7 +1,8 @@
+
 import css from "./homeAndStatisticForm.module.css";
-import Home from "../../images/home.png";
-import Statistics from "../../images/statistics.png";
-import ChartDoughnut from "../Chart/Chart";
+import Home from "../../images/homemobile.png";
+import Statistics from "../../images/statisticmobile.png";
+import Exchange from "../../images/exchange.png";
 import { NavLink } from "react-router-dom";
 import { styled } from "styled-components";
 
@@ -11,52 +12,28 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
-function App() {
-  const data = {
-    labels: [
-      "Income",
-      "Main expenses",
-      "Products",
-      "Car",
-      "Self care",
-      "Child care",
-      "Household products",
-      "Education",
-      "Leisure",
-      "Other expenses",
-      "Entertainment",
-    ],
-  };
-  const colors = [
-    "#FED057",
-    "#FFD8D0",
-    "#FD9498",
-    "#C5BAFF",
-    "#6E78E8",
-    "#4A56E2",
-    "#81E1FF",
-    "#24CCA7",
-    "#00AD84",
-    "#784fca",
-  ];
-
-  const expense = 0;
+function homeAndStatisticForm() {
+  const isMobileView = window.innerWidth  >  766;
 
   return (
     <div className={css.container}>
-      <StyledNavLink to="/home" className={css.buttonContainer}>
-        <img className={css.image} src={Home} alt="icon" />
-        <button className={css["home-button"]}>Home</button>
-      </StyledNavLink>
-      <StyledNavLink to="/diagram" className={css.buttonContainer}>
-        <img className={css.image} src={Statistics} alt="icon" />
-        <button className={css["statistics-button"]}>Statistics</button>
-      </StyledNavLink>
-      <div className={css.doughnutContainer}>
-        <ChartDoughnut data={data} colors={colors} expense={expense} />
+      <div className={css.buttonWrapper}>
+        <StyledNavLink to="/home" end className={css.buttonContainer}>
+          <img className={css.image} src={Home} alt="Home icon" />
+          <button className={css["home-button"]}>Home</button>
+        </StyledNavLink>
+        <StyledNavLink to="/home/statistics" className={css.buttonContainer}>
+          <img className={css.image} src={Statistics} alt="Statistics icon" />
+          <button className={css["statistics-button"]}>Statistics</button>
+        </StyledNavLink>
+        {!isMobileView && (
+          <StyledNavLink to="/home/exchange" className={css.buttonContainer}>
+            <img className={css.image} src={Exchange} alt="Exchange icon" />
+          </StyledNavLink>
+        )}
       </div>
     </div>
   );
 }
 
-export default App;
+export default homeAndStatisticForm;
