@@ -2,6 +2,8 @@ import "./App.css";
 import { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import AuthRedirect from "./components/AuthRedirect/AuthRedirect";
+import GlobalLoader from './components/loader/loader';
+
 // import { useEffect } from "react";
 // import { useDispatch } from "react-redux";
 
@@ -19,8 +21,10 @@ const HomePage = lazy(() => import("./pages/Home/Home.jsx"));
 const Exchange = lazy(() => import("./components/exchange/Exchange"));
 
 const App = () => {
+  
   return (
     <div>
+      <GlobalLoader />
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route
