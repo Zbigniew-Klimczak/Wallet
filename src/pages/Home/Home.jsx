@@ -7,6 +7,8 @@ import HomeAndStatistic from "../../components/homeandstatisticForm/homeandstati
 import Exchange from "../../components/exchange/Exchange";
 import LogoutModal from "../../components/logoutModal/logoutModal";
 import Balance from "../../components/balanceForm/balanceForm";
+import AddTransactionButton from "../../components/addTransactionButton/addTransactionButton";
+import TransactionModal from "../../components/transactionModal/TransactionModal";
 
 const Home = () => {
   const { isLogoutModal } = useSelector((state) => state.user);
@@ -27,15 +29,20 @@ const Home = () => {
     <>
       {isLogoutModal && <LogoutModal />}
       <div className={css.container}>
+        <AddTransactionButton />
         <HeaderForm />
         {windowWidth < 768 && (
-          <div className={css.background}>
-            <HomeAndStatistic />
-            <Outlet />
-          </div>
+          <>
+            <TransactionModal />
+            <div className={css.background}>
+              <HomeAndStatistic />
+              <Outlet />
+            </div>
+          </>
         )}
         {windowWidth >= 768 && windowWidth < 1280 && (
           <div className={css.background}>
+            <AddTransactionButton />
             <div className={css.top}>
               <div className={css.homeAndBalance}>
                 <HomeAndStatistic />
@@ -49,6 +56,7 @@ const Home = () => {
         {windowWidth >= 1280 && (
           <div className={css.background}>
             <div className={css.insideContainer}>
+              <AddTransactionButton />
               <div className={css.leftSide}>
                 <HomeAndStatistic />
                 <Balance />
@@ -58,22 +66,6 @@ const Home = () => {
             </div>
           </div>
         )}
-        {/* <div className={css.content}>
-          <div className={css.leftSide}>
-            <div className={css.leftSideTablet}>
-              <HomeAndStatistic />
-              <BalanceForm />
-            </div>
-            {windowWidth >= 768 && (
-              <div className={css.exchange}>
-                <Exchange />
-              </div>
-            )}
-          </div>
-          <div className={css.rightSide}>
-            <Outlet />
-          </div>
-        </div> */}
       </div>
     </>
   );
