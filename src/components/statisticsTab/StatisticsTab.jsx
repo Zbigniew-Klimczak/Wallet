@@ -9,6 +9,7 @@ const StatisticsTab = () => {
   const [money, setMoney] = useState([]);
   const [expenses, setExpenses] = useState([]);
   const [incomes, setIncomes] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const colors = [
     "#FED057",
@@ -28,59 +29,74 @@ const StatisticsTab = () => {
   }, []);
 
   const getCategories = async () => {
-    const response = await axios.get(
-      "https://wallet-backend-efx6.onrender.com/users/statistics/10/2022",
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    const keys = Object.keys(response.data.data);
-    const values = Object.values(response.data.data);
-    setCategories(keys.slice(2, -1));
-    setMoney(values.slice(2, -1));
-    setExpenses(values[1]);
-    setIncomes(values[0]);
+    setIsLoading(true);
+    try {
+      const response = await axios.get(
+        "https://wallet-backend-efx6.onrender.com/users/statistics/10/2022",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const keys = Object.keys(response.data.data);
+      const values = Object.values(response.data.data);
+      setCategories(keys.slice(2, -1));
+      setMoney(values.slice(2, -1));
+      setExpenses(values[1]);
+      setIncomes(values[0]);
+    } catch (error) {
+      console.error("Wystąpił błąd podczas pobierania danych:", error);
+    }
+    setTimeout(() => {
+    setIsLoading(false);
+  }, 1000);
+
+    setIsLoading(false);
     // setAllMoney(values.reduce((acc, value) => acc + value, 0));
   };
 
   return (
     <div className={css.container}>
-      <div className={css.header}>
-        <p className={css.header__text}>Category</p>
-        <p className={css.header__text}>Sum</p>
-      </div>
-      <div>
-        <ul className={css.list}>
-          {categories.map((category, index) => (
-            <li className={css.listItem} key={index}>
-              <div className={css.categoryAndColor}>
-                <div
-                  className={css.squere}
-                  style={{ backgroundColor: `${colors[index]}` }}
-                ></div>
-                <p>{category.charAt(0).toUpperCase() + category.slice(1)}</p>
-              </div>
-              <p>{money[index]}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className={css.expenses}>
-        <p className={css.expenses__text}>Expenses:</p>
-        <p className={`${css.expenses__text} ${css.expenses__red}`}>
-          {expenses}
-        </p>
-      </div>
-      <div className={css.expenses}>
-        <p className={css.expenses__text}>Income:</p>
-        <p className={`${css.expenses__text} ${css.expenses__green}`}>
-          {incomes}
-        </p>
-      </div>
+      {isLoading ? (
+        <p>Ładowanie, proszę czekać ...</p>
+      ) : (
+        <>
+          <div className={css.header}>
+            <p className={css.header__text}>Category</p>
+            <p className={css.header__text}>Sum</p>
+          </div>
+          <ul className={css.list}>
+            {categories.map((category, index) => (
+              <li className={css.listItem} key={index}>
+                <div className={css.categoryAndColor}>
+                  <div
+                    className={css.squere}
+                    style={{ backgroundColor: `${colors[index]}` }}
+                  ></div>
+                  <p>{category.charAt(0).toUpperCase() + category.slice(1)}</p>
+                </div>
+                <p>{money[index]}</p>
+              </li>
+            ))}
+          </ul>
+          <div className={css.expenses}>
+            <p className={css.expenses__text}>Expenses:</p>
+            <p className={`${css.expenses__text} ${css.expenses__red}`}>
+              {expenses}
+            </p>
+          </div>
+          <div className={css.expenses}>
+            <p className={css.expenses__text}>Income:</p>
+            <p className={`${css.expenses__text} ${css.expenses__green}`}>
+              {incomes}
+            </p>
+          </div>
+        </>
+      )}
     </div>
   );
-};
+            };
+
 
 export default StatisticsTab;
