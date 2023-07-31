@@ -5,7 +5,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
-const ChartDoughnut = () => {
+const ChartDoughnut = ({ year, month }) => {
   ChartJS.register(ArcElement, Tooltip, Legend);
   const token = useSelector((state) => state.user.token);
   const balance = useSelector((state) => state.user.balance);
@@ -19,9 +19,14 @@ const ChartDoughnut = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    getCategories();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [year, month]);
+
   const getCategories = async () => {
     const response = await axios.get(
-      "https://wallet-backend-efx6.onrender.com/users/statistics/10/2022",
+      `https://wallet-backend-efx6.onrender.com/users/statistics/${month}/${year}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,

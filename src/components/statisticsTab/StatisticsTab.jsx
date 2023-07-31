@@ -3,7 +3,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import css from "./statisticsTab.module.css";
 
-const StatisticsTab = () => {
+const StatisticsTab = ({ year, month }) => {
   const token = useSelector((state) => state.user.token);
   const [categories, setCategories] = useState([]);
   const [money, setMoney] = useState([]);
@@ -26,10 +26,14 @@ const StatisticsTab = () => {
     getCategories();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  useEffect(() => {
+    getCategories();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [year, month]);
 
   const getCategories = async () => {
     const response = await axios.get(
-      "https://wallet-backend-efx6.onrender.com/users/statistics/10/2022",
+      `https://wallet-backend-efx6.onrender.com/users/statistics/${month}/${year}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
