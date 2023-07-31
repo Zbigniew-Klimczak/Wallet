@@ -48,61 +48,6 @@
 //     datasets: [
 //       {
 //         label: "",
-//         data: allMoney === 0 ? [1] : money.slice(2, -1),
-//         backgroundColor: [
-//           "#FED057",
-//           "#FFD8D0",
-//           "#FD9498",
-//           "#C5BAFF",
-//           "#6E78E8",
-//           "#4A56E2",
-//           "#81E1FF",
-//           "#24CCA7",
-//           "#00AD84",
-//         ],
-
-//         borderWidth: 0,
-//         cutout: "68%",
-//       },
-//     ],
-//   };
-
-//   const options = {
-//     plugins: {
-//       legend: {
-//         display: false,
-//       },
-//     },
-//     responsive: true,
-//     devicePixelRatio: 2,
-//   };
-
-//   return (
-//     <div className={css.container}>
-//       <h2 className={css.title}>Statistics</h2>
-//       {isLoading ? (
-//         <p>Ładowanie, proszę czekać ...</p>
-//       ) : (
-//         <>
-//           {yes ? (
-//             <>
-//               <Doughnut data={data} options={options} className={css.doughnut} />
-//               <p className={css.expense}>€{balance}</p>
-//             </>
-//           ) : (
-//             <>
-//               <Doughnut data={data} options={options} className={css.doughnut} />
-//               <p className={css.expense}>No expenses</p>
-//             </>
-//           )}
-//         </>
-//       )}
-//     </div>
-//   );
-// };
-
-
-// export default ChartDoughnut;
 
 import { Doughnut } from "react-chartjs-2";
 import css from "./Chart.module.css";
@@ -191,12 +136,20 @@ const ChartDoughnut = () => {
         <>
           {yes ? (
             <>
-              <Doughnut data={data} options={options} className={css.doughnut} />
+              <Doughnut
+                data={data}
+                options={options}
+                className={css.doughnut}
+              />
               <p className={css.expense}>€{balance}</p>
             </>
           ) : (
             <>
-              <Doughnut data={data} options={options} className={css.doughnut} />
+              <Doughnut
+                data={data}
+                options={options}
+                className={css.doughnut}
+              />
               <p className={css.expense}>Brak wydatków</p>
             </>
           )}
