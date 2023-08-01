@@ -32,10 +32,10 @@ const LoginForm = () => {
         <Toaster
           toastOptions={{
             style: {
-              border: "5px solid yellow",
-              fontSize: "36px",
-              backgroundColor: "red",
-              color: "#fff",
+              border: "3px solid #24cca7",
+              fontSize: "24px",
+              backgroundColor: "white",
+              color: "black",
             },
           }}
         />

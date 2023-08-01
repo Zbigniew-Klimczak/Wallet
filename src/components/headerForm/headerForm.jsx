@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setLogoutModal } from "../../redux/userSlice/userSlice";
 import headerLogo from "../../images/headerLogo.png";
 import exitIcon from "../../SVG/exit.svg";
+import exitIconBlack from "../../SVG/exit-czarny.svg"
 import css from "./headerForm.module.css";
 
 const Header = () => {
@@ -24,18 +25,21 @@ const Header = () => {
           <button className={css.nameButton}>{user}</button>
           <span className={css.verticalLine}></span>
         </div>
-        <img
-          className={css.exitIcon}
-          src={exitIcon}
-          alt="exit"
-          onClick={handleLogoutModal}
-        />
-        <button className={css.exitButton} onClick={handleLogoutModal}>
-          Exit
-        </button>
+        <div className={css.exitContainer}>
+          <img
+            className={css.exitIcon}
+            src={exitIcon}
+            alt="exit"
+            onClick={handleLogoutModal}
+          />
+          <button className={css.exitButton} onClick={handleLogoutModal}>
+            Exit
+          </button>
+        </div>
       </div>
     </div>
   );
 };
 
 export default Header;
+
