@@ -1,6 +1,5 @@
 .container {
   width: 90%;
-  overflow: scroll;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,6 +10,17 @@
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .selects {
+    display: flex;
+    margin-bottom: 20px;
+    gap: 16px;
+  }
+  .rightSide {
+    width: 100%;
+    max-width: 336px;
   }
 }
 @media (min-width: 1280px) {
