@@ -1,18 +1,21 @@
-import { useState } from "react";
-import Chart from "../../components/Chart/Chart";
-import StatisticsTab from "../../components/statisticsTab/statisticsTab";
-import Select from "../../components/Select/Select";
-import css from "./Statistics.module.css";
+import { useEffect, useState } from "react";
+import StatisticsTablet from "./StatisticsTablet";
+import StatisticsMobile from "./StatisticsMobile";
 const Statistics = () => {
-  const [year, setYear] = useState(2021);
-  const [month, setMonth] = useState("01");
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [windowWidth]);
+
   return (
-    <div className={css.container}>
-      <Select setYear={setYear} year={year} month={month} />
-      <Select setMonth={setMonth} year={year} month={month} />
-      <Chart year={year} month={month} />
-      <StatisticsTab year={year} month={month} />
-    </div>
+    <>
+      {windowWidth < 768 && <StatisticsMobile />}
+      {windowWidth >= 768 && <StatisticsTablet />}
+    </>
   );
 };
 export default Statistics;

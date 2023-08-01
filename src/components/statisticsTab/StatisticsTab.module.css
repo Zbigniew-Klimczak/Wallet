@@ -1,5 +1,5 @@
 .container {
-  width: 90%;
+  width: 100%;
 }
 .header {
   display: flex;
@@ -63,4 +63,10 @@
 
 .expenses__green {
   color: #24cca7;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 100%;
+  }
 }

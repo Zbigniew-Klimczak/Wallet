@@ -30,7 +30,7 @@ const Select = ({ setYear, year, setMonth, month }) => {
         }
       >
         {setYear
-          ? [2021, 2022, 2023, 2024, 2025].map((year) => (
+          ? [2020, 2021, 2022, 2023, 2024].map((year) => (
               <p
                 className={css.select__listItem}
                 key={year}
