@@ -28,3 +28,10 @@
   font-size: 30px;
   line-height: 45px;
 }
+
+@media (min-width: 768px) {
+  .container {
+    justify-content: center;
+    width: 336px;
+  }
+}

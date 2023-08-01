@@ -77,22 +77,21 @@ const ChartDoughnut = ({ year, month }) => {
   }, [year, month]);
 
   const getCategories = async () => {
-
     setIsLoading(true);
     try {
-       const response = await axios.get(
-      `https://wallet-backend-efx6.onrender.com/users/statistics/${month}/${year}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    const keys = Object.keys(response.data.data);
-    const values = Object.values(response.data.data);
-    setCategories(keys);
-    setMoney(values);
-    setAllMoney(values.reduce((acc, value) => acc + value, 0));
+      const response = await axios.get(
+        `https://wallet-backend-efx6.onrender.com/users/statistics/${month}/${year}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const keys = Object.keys(response.data.data);
+      const values = Object.values(response.data.data);
+      setCategories(keys);
+      setMoney(values);
+      setAllMoney(values.reduce((acc, value) => acc + value, 0));
     } catch (error) {
       console.error("Wystąpił błąd podczas pobierania danych:", error);
     } finally {
