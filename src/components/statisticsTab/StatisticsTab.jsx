@@ -3,7 +3,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import css from "./statisticsTab.module.css";
 
-const StatisticsTab = () => {
+const StatisticsTab = ({ year, month }) => {
   const token = useSelector((state) => state.user.token);
   const [categories, setCategories] = useState([]);
   const [money, setMoney] = useState([]);
@@ -27,24 +27,29 @@ const StatisticsTab = () => {
     getCategories();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  useEffect(() => {
+    getCategories();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [year, month]);
 
   const getCategories = async () => {
+
     setIsLoading(true);
     try {
-      const response = await axios.get(
-        "https://wallet-backend-efx6.onrender.com/users/statistics/10/2022",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      const keys = Object.keys(response.data.data);
-      const values = Object.values(response.data.data);
-      setCategories(keys.slice(2, -1));
-      setMoney(values.slice(2, -1));
-      setExpenses(values[1]);
-      setIncomes(values[0]);
+       const response = await axios.get(
+      `https://wallet-backend-efx6.onrender.com/users/statistics/${month}/${year}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    const keys = Object.keys(response.data.data);
+    const values = Object.values(response.data.data);
+    setCategories(keys.slice(2, -1));
+    setMoney(values.slice(2, -1));
+    setExpenses(values[1]);
+    setIncomes(values[0]);
     } catch (error) {
       console.error("Wystąpił błąd podczas pobierania danych:", error);
     }
@@ -53,6 +58,7 @@ const StatisticsTab = () => {
   }, 1000);
 
     setIsLoading(false);
+
     // setAllMoney(values.reduce((acc, value) => acc + value, 0));
   };
 
