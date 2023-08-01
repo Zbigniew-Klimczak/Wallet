@@ -123,7 +123,7 @@
 .amount {
   width: 70%;
   height: 24px;
-  color: #bdbdbd;
+  color: #000;
   font-family: Circe;
   font-size: 18px;
   font-style: normal;
@@ -131,6 +131,14 @@
   line-height: normal;
   border: none;
   outline: none;
+}
+.amount::placeholder {
+  color: #bdbdbd;
+  font-family: Circe;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
 .date {
   width: 70%;
@@ -143,4 +151,104 @@
   line-height: normal;
   border: none;
   outline: none;
+}
+::-webkit-calendar-picker-indicator {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 24 24"><path fill="%234A56E2" d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>');
+}
+.text {
+  width: 70%;
+  min-height: 24px;
+  color: #000;
+  font-family: Circe;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border: none;
+  outline: none;
+}
+.text::placeholder {
+  color: #bdbdbd;
+  font-family: Circe;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.buttonContainer {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.addButton {
+  border-radius: 20px;
+  background: #24cca7;
+  width: 300px;
+  height: 50px;
+  color: #fff;
+  text-align: center;
+  font-family: Circe;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+}
+.cancelButton {
+  width: 300px;
+  height: 50px;
+  border-radius: 20px;
+  border: 1px solid #4a56e2;
+  background: #fff;
+  color: #4a56e2;
+  text-align: center;
+  font-family: Circe;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+  .modal {
+    width: 540px;
+    height: auto;
+    border-radius: 20px;
+    background: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 40px 0 60px;
+  }
+  .title {
+    font-size: 30px;
+  }
+  .amountAndDate {
+    justify-content: center;
+    flex-direction: row;
+    gap: 32px;
+  }
+  .amount::placeholder {
+    text-align: center;
+  }
+  .date,
+  .amount {
+    width: 190px;
+  }
 }
