@@ -1,6 +1,5 @@
 .transactions {
   width: 100%;
-  overflow: scroll;
 }
 .transactions__list {
   display: flex;
@@ -10,7 +9,6 @@
 }
 .transactions__item {
   border-radius: 10px;
-  overflow: hidden;
 }
 .transactions__row {
   display: flex;
@@ -119,11 +117,14 @@
 @media screen and (min-width: 768px) {
   .transactions {
     width: 100%;
-    box-sizing: border-box;
   }
   .transactions__tbl {
     border-collapse: collapse;
     width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: centers;
     box-sizing: border-box;
   }
 
