@@ -5,15 +5,10 @@ import propTypes from "prop-types";
 import { refreshTokens, updateInfo } from "../../redux/userSlice/userSlice";
 
 const AuthRedirect = ({ redirectOnAuth, redirectTo, children }) => {
-  const userState = useSelector((state) => {
-    return {
-      isAuth: state.user.isAuth,
-      isLoading: state.user.isLoading,
-      accessToken: state.user.token,
-      refreshToken: state.user.refreshToken,
-      error: state.user.error,
-    };
-  });
+  const isAuth = useSelector((state) => state.user.isAuth);
+  const isLoading = useSelector((state) => state.user.isLoading);
+  const accessToken = useSelector((state) => state.user.token);
+  const refreshToken = useSelector((state) => state.user.refreshToken);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   let [firstOnPage, setFirstOnPage] = useState(true);
@@ -21,15 +16,15 @@ const AuthRedirect = ({ redirectOnAuth, redirectTo, children }) => {
 
   useEffect(() => {
     if (!firstOnPage) {
-      if (!userState.isLoading) {
-        if (userState.accessToken !== null && userState.isAuth) {
+      if (!isLoading) {
+        if (accessToken !== null && isAuth) {
           if (redirectOnAuth) {
             navigate(redirectTo);
           } else {
             setReturnComponent(true);
           }
-        } else if (userState.refreshToken !== null && userState.isAuth) {
-          dispatch(refreshTokens(userState.refreshToken));
+        } else if (refreshToken !== null && isAuth) {
+          dispatch(refreshTokens(refreshToken));
         } else {
           if (!redirectOnAuth) {
             navigate("/");
@@ -40,37 +35,29 @@ const AuthRedirect = ({ redirectOnAuth, redirectTo, children }) => {
       }
     }
   }, [
-    userState.accessToken,
-    userState.isLoading,
-    firstOnPage,
-    userState.refreshToken,
-    redirectOnAuth,
-    navigate,
-    redirectTo,
+    accessToken,
     dispatch,
-    userState.isAuth,
+    firstOnPage,
+    isAuth,
+    isLoading,
+    navigate,
+    redirectOnAuth,
+    redirectTo,
+    refreshToken,
   ]);
 
   useEffect(() => {
     if (firstOnPage) {
       setFirstOnPage(false);
-      if (userState.isAuth) {
-        dispatch(updateInfo(userState.accessToken));
+      if (isAuth) {
+        dispatch(updateInfo(accessToken));
       } else if (redirectOnAuth) {
         setReturnComponent(true);
       } else {
         navigate(redirectTo);
       }
     }
-  }, [
-    dispatch,
-    firstOnPage,
-    navigate,
-    redirectOnAuth,
-    redirectTo,
-    userState.accessToken,
-    userState.isAuth,
-  ]);
+  }, [accessToken, dispatch, firstOnPage, isAuth, navigate, redirectOnAuth, redirectTo]);
   return returnComponent ? <>{children}</> : <p>Use Spinner Here!</p>;
 };
 
