@@ -18,6 +18,39 @@ export const ERRORS = Object.freeze({
   NotAuthorized: "Request failed with status code 401",
 });
 
+export const addTransaction = createAsyncThunk(
+  "user/addTransaction",
+  async ({ transaction, token }) => {
+    const response = await axios.post(
+      "https://wallet-backend-efx6.onrender.com/users/transactions",
+      transaction,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response.data;
+  }
+);
+
+export const deleteTransaction = createAsyncThunk(
+  "user/deleteTransaction",
+  async ({ id, token }) => {
+    const response = await axios.delete(
+      `https://wallet-backend-efx6.onrender.com/users/transactions/${id}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response.data;
+  }
+);
+
 export const login = createAsyncThunk("user/login", async (credentials) => {
   const response = await axios.post(
     "https://wallet-backend-efx6.onrender.com/users/login",
@@ -27,34 +60,25 @@ export const login = createAsyncThunk("user/login", async (credentials) => {
 });
 
 export const logout = createAsyncThunk("user/logout", async (token) => {
-  const response = await axios.get(
-    "https://wallet-backend-efx6.onrender.com/users/logout",
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
+  const response = await axios.get("https://wallet-backend-efx6.onrender.com/users/logout", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
   return response.data;
 });
 
 export const register = createAsyncThunk("user/register", async (data) => {
-  const response = await axios.post(
-    "https://wallet-backend-efx6.onrender.com/users/signup",
-    data
-  );
+  const response = await axios.post("https://wallet-backend-efx6.onrender.com/users/signup", data);
   return response.data;
 });
 
 export const updateInfo = createAsyncThunk("user/current", async (token) => {
-  const response = await axios.get(
-    "https://wallet-backend-efx6.onrender.com/users/current",
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
+  const response = await axios.get("https://wallet-backend-efx6.onrender.com/users/current", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
   return response.data;
 });
 
@@ -86,6 +110,9 @@ const userSlice = createSlice({
     },
     setAddTransactionModal: (state, action) => {
       state.isAddTransactionModal = action.payload;
+    },
+    setError: (state, action) => {
+      state.error = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -172,14 +199,36 @@ const userSlice = createSlice({
         }
         state.isLoading = false;
         state.error = action.error.message;
+      })
+      .addCase(addTransaction.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(addTransaction.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.transactions = action.payload.data.transactions;
+        state.balance = action.payload.data.balance;
+        state.error = null;
+      })
+      .addCase(addTransaction.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message;
+      })
+      .addCase(deleteTransaction.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteTransaction.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.transactions = action.payload.data.transactions;
+        state.balance = action.payload.data.balance;
+        state.error = null;
+      })
+      .addCase(deleteTransaction.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message;
       });
   },
 });
 
-export const {
-  updateTransactions,
-  setLogoutModal,
-  setAddTransactionModal,
-  clearError,
-} = userSlice.actions;
+export const { updateTransactions, setLogoutModal, setAddTransactionModal, clearError, setError } =
+  userSlice.actions;
 export default userSlice.reducer;
