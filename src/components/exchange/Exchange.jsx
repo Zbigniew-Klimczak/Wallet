@@ -1,6 +1,16 @@
+import { useEffect } from "react";
 import css from "./Exchange.module.css";
-
+import refreshExchangeRates from "./ExchangeCurrency";
 const Exchange = () => {
+  useEffect(() => {
+    refreshExchangeRates();
+    const interval = setInterval(() => {
+      refreshExchangeRates();
+    }, 3600000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
   return (
     <div className={css.container}>
       <ul className={`${css.listHeader}`}>
