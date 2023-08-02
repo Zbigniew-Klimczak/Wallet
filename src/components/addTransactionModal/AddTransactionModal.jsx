@@ -1,8 +1,8 @@
 import css from "./AddTransactionModal.module.css";
-import React, { useState } from "react";
+import { useState } from "react";
 import Select from "react-select";
-import { useDispatch } from "react-redux";
-import { setAddTransactionModal } from "../../redux/userSlice/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addTransaction, setAddTransactionModal, setError } from "../../redux/userSlice/userSlice";
 
 const AddTransactionModal = () => {
   const [date, setDate] = useState(formatDate());
@@ -10,29 +10,35 @@ const AddTransactionModal = () => {
   const [select, setSelect] = useState(null);
   const [amount, setAmount] = useState(0);
   const [comment, setComment] = useState("");
+  const token = useSelector((state) => state.user.token);
+  const dispatch = useDispatch();
 
   const Submit = () => {
+    let transaction;
     if (checkbox === "Expense") {
-      console.log({
+      transaction = {
         type: "Income",
         category: "Income",
-        value: amount,
+        value: Number(amount),
         date: date,
         comment: comment,
-      });
+      };
     }
     if (checkbox === "Income") {
-      console.log({
+      transaction = {
         type: "Expense",
         category: select,
-        value: amount,
+        value: Number(amount),
         date: date,
         comment: comment,
-      });
+      };
+    }
+    if (isNaN(transaction.value)) {
+      dispatch(setError("Nieprawidłowa wartość tranzakcji"));
+    } else {
+      dispatch(addTransaction({ transaction, token }));
     }
   };
-
-  const dispatch = useDispatch();
   const handleLogoutModal = () => {
     dispatch(setAddTransactionModal(false));
   };
@@ -116,11 +122,7 @@ const AddTransactionModal = () => {
           <div className={css.buttonCover}>
             <div className={css.button}>
               <p className={css.incomeText}>Income</p>
-              <input
-                type="checkbox"
-                className={css.checkbox}
-                onChange={checkboxValue}
-              />
+              <input type="checkbox" className={css.checkbox} onChange={checkboxValue} />
               <div className={css.knobs}></div>
               <p className={css.expenseText}>Expense</p>
             </div>
@@ -137,7 +139,7 @@ const AddTransactionModal = () => {
         )}
         <div className={css.amountAndDate}>
           <input
-            type="text"
+            type="number"
             placeholder="0.00"
             className={css.amount}
             onChange={(e) => setAmount(e.target.value)}
@@ -161,11 +163,7 @@ const AddTransactionModal = () => {
           <button className={css.addButton} type="button" onClick={Submit}>
             Add
           </button>
-          <button
-            className={css.cancelButton}
-            type="button"
-            onClick={handleLogoutModal}
-          >
+          <button className={css.cancelButton} type="button" onClick={handleLogoutModal}>
             Cancel
           </button>
         </div>

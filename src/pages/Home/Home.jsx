@@ -7,7 +7,7 @@ import HomeAndStatistic from "../../components/homeandstatisticForm/homeandstati
 import Exchange from "../../components/exchange/Exchange";
 import LogoutModal from "../../components/logoutModal/logoutModal";
 import Balance from "../../components/balanceForm/balanceForm";
-import AddTransactionButton from "../../components/addTransactionButton/addTransactionButton";
+import AddTransactionButton from "../../components/addTransactionButton/AddTransactionButton";
 import AddTransactionModal from "../../components/addTransactionModal/AddTransactionModal";
 
 const Home = () => {

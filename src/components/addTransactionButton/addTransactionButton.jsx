@@ -1,8 +1,8 @@
-import css from "./addTransactionButton.module.css";
+import css from "./AddTransactionButton.module.css";
 import { useDispatch } from "react-redux";
 import { setAddTransactionModal } from "../../redux/userSlice/userSlice";
 
-const addTransactionButton = () => {
+const AddTransactionButton = () => {
   const dispatch = useDispatch();
   const handleLogoutModal = () => {
     dispatch(setAddTransactionModal(true));
@@ -14,4 +14,4 @@ const addTransactionButton = () => {
   );
 };
 
-export default addTransactionButton;
+export default AddTransactionButton;
