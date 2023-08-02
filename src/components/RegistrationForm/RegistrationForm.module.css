@@ -112,6 +112,7 @@
   letter-spacing: 1.8px;
   text-transform: uppercase;
   width: 100%;
+  cursor: pointer;
 }
 
 .register {
@@ -131,6 +132,7 @@
   text-transform: uppercase;
   width: 100%;
   margin-top: 20px;
+  cursor: pointer;
 }
 
 @media (min-width: 768px) {

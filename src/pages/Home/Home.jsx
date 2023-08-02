@@ -7,9 +7,13 @@ import HomeAndStatistic from "../../components/homeandstatisticForm/homeandstati
 import Exchange from "../../components/exchange/Exchange";
 import LogoutModal from "../../components/logoutModal/logoutModal";
 import Balance from "../../components/balanceForm/balanceForm";
+import AddTransactionButton from "../../components/addTransactionButton/addTransactionButton";
+import AddTransactionModal from "../../components/addTransactionModal/AddTransactionModal";
 
 const Home = () => {
-  const { isLogoutModal } = useSelector((state) => state.user);
+  const { isLogoutModal, isAddTransactionModal } = useSelector(
+    (state) => state.user
+  );
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -27,53 +31,49 @@ const Home = () => {
     <>
       {isLogoutModal && <LogoutModal />}
       <div className={css.container}>
+        <AddTransactionButton />
         <HeaderForm />
         {windowWidth < 768 && (
-          <div className={css.background}>
-            <HomeAndStatistic />
-            <Outlet />
-          </div>
+          <>
+            {isAddTransactionModal && <AddTransactionModal />}
+            <div className={css.background}>
+              <HomeAndStatistic />
+              <Outlet />
+            </div>
+          </>
         )}
         {windowWidth >= 768 && windowWidth < 1280 && (
-          <div className={css.background}>
-            <div className={css.top}>
-              <div className={css.homeAndBalance}>
-                <HomeAndStatistic />
-                <Balance />
-              </div>
-              <Exchange />
-            </div>
-            <Outlet />
-          </div>
-        )}
-        {windowWidth >= 1280 && (
-          <div className={css.background}>
-            <div className={css.insideContainer}>
-              <div className={css.leftSide}>
-                <HomeAndStatistic />
-                <Balance />
+          <>
+            {isAddTransactionModal && <AddTransactionModal />}
+            <div className={css.background}>
+              <AddTransactionButton />
+              <div className={css.top}>
+                <div className={css.homeAndBalance}>
+                  <HomeAndStatistic />
+                  <Balance />
+                </div>
                 <Exchange />
               </div>
               <Outlet />
             </div>
-          </div>
+          </>
         )}
-        {/* <div className={css.content}>
-          <div className={css.leftSide}>
-            <div className={css.leftSideTablet}>
-              <HomeAndStatistic />
-              <BalanceForm />
-            </div>
-            {windowWidth >= 768 && (
-              <div className={css.exchange}>
-                <Exchange />
+        {windowWidth >= 1280 && (
+          <>
+            {isAddTransactionModal && <AddTransactionModal />}
+            <div className={css.background}>
+              <div className={css.insideContainer}>
+                <AddTransactionButton />
+                <div className={css.leftSide}>
+                  <HomeAndStatistic />
+                  <Balance />
+                  <Exchange />
+                </div>
+                <Outlet />
               </div>
-            )}
-          </div>
-          <div className={css.rightSide}>
-            <Outlet />
-          </div>
-        </div> */}
+            </div>
+          </>
+        )}
       </div>
     </>
   );

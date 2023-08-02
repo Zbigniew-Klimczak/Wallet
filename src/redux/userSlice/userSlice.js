@@ -6,7 +6,7 @@ const initialState = {
   isAuth: false,
   isLoading: false,
   isLogoutModal: false,
-
+  isAddTransactionModal: false,
   error: null,
   token: null,
   refreshToken: null,
@@ -27,25 +27,34 @@ export const login = createAsyncThunk("user/login", async (credentials) => {
 });
 
 export const logout = createAsyncThunk("user/logout", async (token) => {
-  const response = await axios.get("https://wallet-backend-efx6.onrender.com/users/logout", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  const response = await axios.get(
+    "https://wallet-backend-efx6.onrender.com/users/logout",
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
   return response.data;
 });
 
 export const register = createAsyncThunk("user/register", async (data) => {
-  const response = await axios.post("https://wallet-backend-efx6.onrender.com/users/signup", data);
+  const response = await axios.post(
+    "https://wallet-backend-efx6.onrender.com/users/signup",
+    data
+  );
   return response.data;
 });
 
 export const updateInfo = createAsyncThunk("user/current", async (token) => {
-  const response = await axios.get("https://wallet-backend-efx6.onrender.com/users/current", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  const response = await axios.get(
+    "https://wallet-backend-efx6.onrender.com/users/current",
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
   return response.data;
 });
 
@@ -74,6 +83,9 @@ const userSlice = createSlice({
     },
     setLogoutModal: (state, action) => {
       state.isLogoutModal = action.payload;
+    },
+    setAddTransactionModal: (state, action) => {
+      state.isAddTransactionModal = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -164,6 +176,10 @@ const userSlice = createSlice({
   },
 });
 
-
-export const { updateTransactions, setLogoutModal, clearError } = userSlice.actions;
+export const {
+  updateTransactions,
+  setLogoutModal,
+  setAddTransactionModal,
+  clearError,
+} = userSlice.actions;
 export default userSlice.reducer;
