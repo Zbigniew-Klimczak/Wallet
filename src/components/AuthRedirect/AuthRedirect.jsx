@@ -58,7 +58,7 @@ const AuthRedirect = ({ redirectOnAuth, redirectTo, children }) => {
       }
     }
   }, [accessToken, dispatch, firstOnPage, isAuth, navigate, redirectOnAuth, redirectTo]);
-  return returnComponent ? <>{children}</> : <p>Use Spinner Here!</p>;
+  return returnComponent ? <>{children}</> : <></>;
 };
 
 AuthRedirect.defaultProps = {

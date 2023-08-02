@@ -7,13 +7,11 @@ import HomeAndStatistic from "../../components/homeandstatisticForm/homeandstati
 import Exchange from "../../components/exchange/Exchange";
 import LogoutModal from "../../components/logoutModal/logoutModal";
 import Balance from "../../components/balanceForm/balanceForm";
-import AddTransactionButton from "../../components/addTransactionButton/AddTransactionButton";
+import AddTransactionButton from "../../components/addTransactionButton/addTransactionButton";
 import AddTransactionModal from "../../components/addTransactionModal/AddTransactionModal";
 
 const Home = () => {
-  const { isLogoutModal, isAddTransactionModal } = useSelector(
-    (state) => state.user
-  );
+  const { isLogoutModal, isAddTransactionModal } = useSelector((state) => state.user);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
