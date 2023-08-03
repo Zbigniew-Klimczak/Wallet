@@ -60,25 +60,34 @@ export const login = createAsyncThunk("user/login", async (credentials) => {
 });
 
 export const logout = createAsyncThunk("user/logout", async (token) => {
-  const response = await axios.get("https://wallet-backend-efx6.onrender.com/users/logout", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  const response = await axios.get(
+    "https://wallet-backend-efx6.onrender.com/users/logout",
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
   return response.data;
 });
 
 export const register = createAsyncThunk("user/register", async (data) => {
-  const response = await axios.post("https://wallet-backend-efx6.onrender.com/users/signup", data);
+  const response = await axios.post(
+    "https://wallet-backend-efx6.onrender.com/users/signup",
+    data
+  );
   return response.data;
 });
 
 export const updateInfo = createAsyncThunk("user/current", async (token) => {
-  const response = await axios.get("https://wallet-backend-efx6.onrender.com/users/current", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  const response = await axios.get(
+    "https://wallet-backend-efx6.onrender.com/users/current",
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
   return response.data;
 });
 
@@ -156,6 +165,7 @@ const userSlice = createSlice({
         state.token = action.payload.data.accessToken;
         state.refreshToken = action.payload.data.refreshToken;
         state.balance = action.payload.data.user.balance;
+        state.transactions = action.payload.data.user.transactions;
       })
       .addCase(login.rejected, (state) => {
         state.isLoading = false;
@@ -229,6 +239,11 @@ const userSlice = createSlice({
   },
 });
 
-export const { updateTransactions, setLogoutModal, setAddTransactionModal, clearError, setError } =
-  userSlice.actions;
+export const {
+  updateTransactions,
+  setLogoutModal,
+  setAddTransactionModal,
+  clearError,
+  setError,
+} = userSlice.actions;
 export default userSlice.reducer;
