@@ -1,1 +1,0 @@
-import{a as n,j as e}from"./index-447c3d23.js";const c="_container_1pzi3_1",r="_text_1pzi3_29",o="_headertext_1pzi3_47",t={container:c,text:r,headertext:o};function x(){const{balance:s}=n(a=>a.user);return e.jsxs("div",{className:t.container,children:[e.jsx("p",{className:t.text,children:"YOUR BALANCE"}),e.jsxs("h1",{className:t.headertext,children:[s," PLN"]})]})}export{x as B};
