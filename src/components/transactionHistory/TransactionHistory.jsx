@@ -4,7 +4,7 @@ import styles from "./transactionHistory.module.css";
 import moment from "moment/moment";
 import { deleteTransaction } from "../../redux/userSlice/userSlice";
 
-export const TransactionHistory = () => {
+const TransactionHistory = () => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.user.token);
   function formatDate(date) {
@@ -189,3 +189,4 @@ export const TransactionHistory = () => {
     </div>
   );
 };
+export default TransactionHistory;
