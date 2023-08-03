@@ -8,6 +8,7 @@ import { clearError, login } from "../../redux/userSlice/userSlice";
 import toast, { Toaster } from "react-hot-toast";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import logo from "../../SVG/logo.svg";
 
 // import { envelope } from "../../SVG/envelope.svg";
 const LoginForm = () => {
@@ -39,7 +40,7 @@ const LoginForm = () => {
             },
           }}
         />
-        <img className={css.logo__icon} src="/logo.svg" alt="logo" />
+        <img className={css.logo__icon} src={logo} alt="logo" />
         <h1 className={css.logo__txt}>Wallet</h1>
       </div>
       <Formik
@@ -50,10 +51,16 @@ const LoginForm = () => {
         validationSchema={SignupSchema}
         onSubmit={(values) => {
           dispatch(login(values));
-        }}>
+        }}
+      >
         <Form className={css.form}>
           <div className={css.input__div}>
-            <Field className={css.input__email} id="email" name="email" placeholder="Email" />
+            <Field
+              className={css.input__email}
+              id="email"
+              name="email"
+              placeholder="Email"
+            />
             <ErrorMessage name="email" component="Field">
               {(msg) => <div>{msg}</div>}
             </ErrorMessage>
