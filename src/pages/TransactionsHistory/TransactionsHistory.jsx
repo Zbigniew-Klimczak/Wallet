@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import TransactionHistory from "../../components/transactionHistory/transactionHistory";
 import BalanceForm from "../../components/balanceForm/balanceForm";
 import css from "./TransactionsHistory.module.css";
 const TransactionsHistory = () => {
@@ -17,7 +17,10 @@ const TransactionsHistory = () => {
     };
   }, []);
   return (
-    <div className={css.container}>{windowWidth < 768 && <BalanceForm />}</div>
+    <div className={css.container}>
+      {windowWidth < 768 && <BalanceForm />}
+      <TransactionHistory />
+    </div>
   );
 };
 export default TransactionsHistory;
