@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import RegistrationForm from "../../components/RegistrationForm/RegistrationForm";
 import css from "./Registration.module.css";
-import bigLogo2 from "../../images/headerLogo.png";
+import bigLogo2 from "../../images/bigLogo2.png";
 
 const Registration = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
