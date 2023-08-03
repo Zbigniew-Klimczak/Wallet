@@ -6,7 +6,7 @@ function Balance() {
   return (
     <div className={css["container"]}>
       <p className={css["text"]}>YOUR BALANCE</p>
-      <h1 className={css["headertext"]}>€ {balance}</h1>
+      <h1 className={css["headertext"]}>{balance} PLN</h1>
     </div>
   );
 }

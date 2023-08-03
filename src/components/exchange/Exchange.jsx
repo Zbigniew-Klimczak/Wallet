@@ -1,11 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import css from "./Exchange.module.css";
 import refreshExchangeRates from "./ExchangeCurrency";
+
 const Exchange = () => {
+  const [rates, setRates] = useState(null);
   useEffect(() => {
-    refreshExchangeRates();
+    refreshExchangeRates().then((result) => {
+      setRates(result);
+    });
     const interval = setInterval(() => {
-      refreshExchangeRates();
+      refreshExchangeRates().then((result) => setRates(result));
     }, 3600000);
     return () => {
       clearInterval(interval);
@@ -20,13 +24,21 @@ const Exchange = () => {
       </ul>
       <ul className={css.list}>
         <li className={`${css.item} ${css.itemLeft}`}>USD</li>
-        <li className={`${css.item} ${css.itemRight}`}>27.55</li>
-        <li className={`${css.item} ${css.itemLast}`}>27.65</li>
+        <li className={`${css.item} ${css.itemRight}`}>
+          {rates ? ((1 * 0.999908) / rates.USD).toFixed(4) : "Not loaded"}
+        </li>
+        <li className={`${css.item} ${css.itemLast}`}>
+          {rates ? ((1 * 1.000913) / rates.USD).toFixed(4) : "Not loaded"}
+        </li>
       </ul>
       <ul className={css.list}>
         <li className={`${css.item} ${css.itemLeft}`}>EUR</li>
-        <li className={`${css.item} ${css.itemRight}`}>30.00</li>
-        <li className={`${css.item} ${css.itemLast}`}>30.10</li>
+        <li className={`${css.item} ${css.itemRight}`}>
+          {rates ? ((1 * 0.999908) / rates.EUR).toFixed(4) : "Not loaded"}
+        </li>
+        <li className={`${css.item} ${css.itemLast}`}>
+          {rates ? ((1 * 1.000913) / rates.EUR).toFixed(4) : "Not loaded"}
+        </li>
       </ul>
     </div>
   );
