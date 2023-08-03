@@ -6,6 +6,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import { PasswordStrengthMeter } from "../PasswordStrengthMeter/PasswordStrengthMeter";
+import logo from "../../SVG/logo.svg";
 
 const RegistrationForm = () => {
   //   const [confirmPassword, setConfirmPassword] = useState("");
@@ -41,7 +42,7 @@ const RegistrationForm = () => {
             },
           }}
         />
-        <img className={css.logo__icon} src="/logo.svg" alt="logo" />
+        <img className={css.logo__icon} src={logo} alt="logo" />
         <h1 className={css.logo__txt}>Wallet</h1>
       </div>
       <Formik
